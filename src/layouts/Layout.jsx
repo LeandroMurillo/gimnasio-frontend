@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router';
-//import Navbar from '../components/Navbar';
+import GymNavbar from '../components/GymNavbar';
 // import Footer from '../components/Footer';
 
 export default function Layout() {
   return (
     <>
-      {/* <Navbar /> */}
+       <GymNavbar /> 
       <Outlet />
       {/* <Footer /> */}
     </>

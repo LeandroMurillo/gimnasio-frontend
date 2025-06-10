@@ -1,0 +1,245 @@
+/* GymNavbar.module.css */
+.navbarRollin {
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #fdbb2d;
+    transition: all 0.3s ease;
+  }
+  
+  .brand {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+  
+  .brand:hover {
+    transform: scale(1.05);
+  }
+  
+  .brand span {
+    color: #fdbb2d;
+  }
+  
+  .navLink {
+    color: white;
+    font-weight: 600;
+    margin: 0 8px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .navLink:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    color: #fdbb2d;
+  }
+  
+  .activeLink {
+    background-color: rgba(253, 187, 45, 0.3);
+    box-shadow: 0 4px 8px rgba(253, 187, 45, 0.2);
+    color: #fdbb2d;
+    font-weight: 700;
+  }
+  
+  /* Dropdown styles */
+  .navDropdown .dropdown-menu {
+    background-color: #0d206e;
+    border: none;
+    border-radius: 8px;
+    margin-top: 5px;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .dropdownItem {
+    color: white !important;
+    padding: 10px 20px !important;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+  }
+  
+  .dropdownItem:hover {
+    background-color: rgba(253, 187, 45, 0.2) !important;
+    color: #fdbb2d !important;
+  }
+  
+  .dropdownDivider {
+    background-color: rgba(253, 187, 45, 0.5);
+    margin: 0;
+  }
+  
+  /* Toggler styles */
+  .toggler {
+    border: none;
+    padding: 0.5rem;
+  }
+  
+  .toggler:focus {
+    box-shadow: 0 0 0 0.15rem rgba(253, 187, 45, 0.5);
+  }
+  
+  .togglerIcon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 1.5em;
+    height: 1.5em;
+  }
+  
+  /* Admin specific styles */
+  .adminDropdown {
+    color: #ffcc00;
+  }
+  
+  .adminDropdown .dropdown-item {
+    color: white !important;
+  }
+  
+  .adminDropdown .dropdown-item:hover {
+    color: #ffcc00 !important;
+  }
+  
+  /* Logout button styles */
+  .navLink button {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .navbarRollin {
+      padding: 0.5rem 0;
+    }
+    
+    .navLink {
+      margin: 5px 0;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+    
+    .navDropdown .dropdown-menu {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      margin-top: 0;
+    }
+    
+    .dropdownItem {
+      padding: 8px 15px !important;
+    }
+  }
+  
+  /* Animation for navbar items */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .navbarRollin .nav-item {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  .navbarRollin .nav-item:nth-child(1) { animation-delay: 0.1s; }
+  .navbarRollin .nav-item:nth-child(2) { animation-delay: 0.2s; }
+  .navbarRollin .nav-item:nth-child(3) { animation-delay: 0.3s; }
+  .navbarRollin .nav-item:nth-child(4) { animation-delay: 0.4s; }
+  /* Continue for as many items as you have */
+
+
+
+/*   GymNavbar.module.css 
+.navbarRollin {
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #fdbb2d;
+  }
+  
+  .brand {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: white  !important ;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+  }
+  
+  .brand span {
+    color: #fdbb2d;
+  }
+  
+  .navLink {
+    color: white /* !important ;
+    font-weight: 600;
+    margin: 0 8px;
+    padding: 8px 15px /* !important ;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .navLink:hover {
+    background-color: rgba(255, 255, 255, 0.2) ;
+    transform: translateY(-2px);
+  }
+  
+  .dropdownMenu {
+    background-color: #0d206e;
+    border: none;
+    border-radius: 8px;
+    margin-top: 5px;
+  }
+  
+  .dropdownItem {
+    color: rgb(0, 0, 0) ;
+    padding: 10px 20px ;
+    transition: all 0.2s ease;
+  }
+  
+  .dropdownItem:hover {
+    background-color: rgba(253, 187, 45, 0.2);
+  }
+  
+  .dropdownDivider {
+    background-color: rgba(253, 187, 45, 0.5);
+  }
+  
+  .toggler {
+    border-color: rgba(255, 255, 255, 0.5) /* !important ;
+  }
+  
+  .togglerIcon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") /* !important ;
+  }
+  
+  /* Efecto especial para el enlace activo 
+  .activeLink {
+    background-color: rgba(253, 187, 45, 0.3) /* !important ;
+    box-shadow: 0 4px 8px rgba(253, 187, 45, 0.2);
+  }
+  
+.adminDropdown {
+    color: #ffcc00 /* !important ; /* Color distinto para admin 
+  }
+  
+  .navLink button {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+  }
+  
+  .navLink button:hover {
+    background: none;
+    color: inherit;
+  }  */
