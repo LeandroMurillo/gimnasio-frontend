@@ -46,7 +46,7 @@ function GymNavbar() {
               to="/clases" 
               className={`${styles.navLink} ${isActive('/clases') ? styles.activeLink : ''}`}
             >
-              Planes
+              <span>INSCRIBITE YA!</span>
             </Nav.Link>
 
             <Nav.Link 
@@ -54,7 +54,7 @@ function GymNavbar() {
               to="/clases" 
               className={`${styles.navLink} ${isActive('/clases') ? styles.activeLink : ''}`}
             >
-              Inscribite ya!
+              Planes
             </Nav.Link>
             
             <NavDropdown 
