@@ -1,84 +1,44 @@
 .footer {
-    background-color: #2c3e50;
-    color: white;
-    padding: 30px 0;
-    text-align: center;
-    margin-top: auto;
-  }
-  
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  /* Media Query para móviles */
-  @media (max-width: 768px) {
-    .footer {
-      padding: 20px 0;
-    }
-    
-    .social-icons {
-      margin: 15px 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    
-    .social-icons a {
-      margin: 0 10px;
-      padding: 8px;
-    }
-    
-    .social-icons .icon {
-      font-size: 28px; /* Iconos más grandes en móviles */
-    }
-    
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .footer-links a {
-      margin: 5px 0;
-      padding: 5px;
-    }
-  }
-  
-  /* Media Query para tablets */
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .social-icons .icon {
-      font-size: 26px;
-    }
-  }
-  
-  /* Efectos hover (mejorados para móviles) */
-  .social-icons a {
-    display: inline-block;
-    margin: 0 15px;
-    color: white;
-    transition: all 0.3s ease;
-    transform: scale(1);
-  }
-  
-  .social-icons a:hover, 
-  .social-icons a:focus { /* Para accesibilidad en móviles */
-    transform: scale(1.1);
-    opacity: 0.8;
-  }
-  
-  /* Colores específicos para cada red social */
-  .social-icons a:hover:nth-child(1),
-  .social-icons a:focus:nth-child(1) { /* Facebook */
-    color: #3b5998;
-  }
-  
-  .social-icons a:hover:nth-child(2),
-  .social-icons a:focus:nth-child(2) { /* Instagram */
-    color: #e1306c;
-  }
-  
-  .social-icons a:hover:nth-child(3),
-  .social-icons a:focus:nth-child(3) { /* WhatsApp */
-    color: #25D366;
-  }
+  background-color: #000000;
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 30px; 
+  margin-top: 20px; 
+}
+
+.icon {
+  color: white; 
+  font-size: 24px; 
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Colores al hacer hover */
+.icon:hover {
+  opacity: 0.8;
+}
+
+.icon:nth-child(1):hover { /* Facebook */
+  color: #3b5998;
+}
+
+.icon:nth-child(2):hover { /* Instagram */
+  color: #e1306c;
+}
+
+.icon:nth-child(3):hover { /* WhatsApp */
+  color: #25D366;
+}
