@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //import Contacto from './pages/Contacto.jsx';
-//import Error404 from './pages/Error404.jsx';
+import Error404 from './pages/Error404.jsx';
 import Home from './pages/Home.jsx';
 //import Horarios from './pages/Horarios.jsx';
 import Layout from '../src/layouts/Layout.jsx';
@@ -17,8 +17,8 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
-          {/* <Route path="/contacto" element={<Contacto />} />
-          {/* <Route path="*" element={<Error404 />} /> */}
+          {/* <Route path="/contacto" element={<Contacto />} />*/}
+          <Route path="*" element={<Error404 />} />
           {/* <Route path="/horarios" element={<Horarios />} /> */}
           {/* <Route path="/planes-de-entrenamiento" element={<Planes />} /> */}
           {/* <Route path="/login" element={<Login />} /> */}
