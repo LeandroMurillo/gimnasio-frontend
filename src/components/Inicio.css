@@ -1,39 +1,25 @@
-*{
-   overflow-x: hidden;
-}
-.imagen {
-
-  max-width: 100%;
-  /* La imagen no supera el ancho del contenedor */
-  height: auto;
-  /* Mantiene la proporción de la imagen */
-  margin-top: 50px;
-  /* Mantienes tu margen superior */
-  display: block;
-  /* Evita espacios no deseados debajo de la imagen */
+* {
+  overflow-x: hidden;
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
-  .imagen {
-    margin-top: 130px;
-    /* Reduce el margen en pantallas pequeñas */
- max-width: 700px;
-  }
-
-}
-/* .seccion-iglesia{
-  max-width: max-content;
-} */
-
 .fondo {
   background-color: #eaeaea;
+  padding-bottom: 2rem;
+}
+
+.imagen {
+  max-width: 100%;
+  height: auto;
+  margin-top: 50px;
+  display: block;
 }
 
 .video {
-  margin-top: 40px;
-  margin-left: 60px;
-  border-radius: 30px;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  
 }
 
 .texto {
@@ -43,24 +29,39 @@
 
 .color-fondotexto {
   background-color: #eaeaea;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .color-titulo {
   color: black;
+}
 
+.seccion-iglesia {
+  width: 100%;
+  margin-top: 2rem;
 }
 
 .card-group {
   background-color: #eaeaea;
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 1rem;
 }
 
 .cartas {
+  flex: 1 1 300px;
+  max-width: 350px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 1rem;
   background-color: #fff;
+ 
 }
 
 .cartas:hover {
@@ -72,6 +73,7 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
+ 
 }
 
 .cartas .card-body {
@@ -97,4 +99,38 @@
   text-align: center;
   font-size: 0.8rem;
   color: #888;
+}
+
+.fotos {
+  width: 100%;
+  height: 250px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .imagen {
+    margin-top: 130px;
+    max-width: 100%;
+  }
+
+  .texto {
+    margin: 20px;
+    text-align: center;
+  }
+
+  .color-fondotexto {
+    flex-direction: column;
+  }
+
+  .video {
+    width: 100%;
+    max-width: 80vw;
+    margin: auto ;
+  }
+
+  .cartas {
+    max-width: 90%;
+    margin: auto;
+  }
 }

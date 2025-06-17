@@ -5,11 +5,11 @@ import './Footer.css';
 const Footer = () => {
   return (
     <footer className="footer mt-auto py-3 ">
-      <Container className='caja1'>
-        <img src="https://chatgpt.com/backend-api/public_content/enc/eyJpZCI6Im1fNjg0MTk4YmNkNTY4ODE5MTgxMTFkZWI4ZWU3NTY4Nzk6ZmlsZV8wMDAwMDAwMDQ5ODg2MWY1ODBkMjEyZjMwMjE1NWI1MyIsInRzIjoiNDg1ODY5IiwicCI6InB5aSIsInNpZyI6IjllNjE4YjA3YmZiNDQ3ZDAyNzQwYjBkMzc5ZjA3YjA2YTRkNDRhMmRjNjY0MTc0ZWIzOTI2ZDZhNGMyYmY4MmYiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsfQ==" alt="logo" className='logo-footer' />
-      </Container>
+      <div className='caja1'>
+        <img src="/img/ChatGPT Image 5 jun 2025, 10_13_23 a.m..png" alt="logo" className='logo-footer' />
+      </div>
       <div className='caja2'>
-        <h3> Siguenos</h3>
+        <h3 className='seguir'> Siguenos</h3>
         <img className='iconos1' src="public/img/instagram.png" alt="" />
         <img src="public/img/facebook.png" className='iconos2' alt="" />
       </div>

@@ -7,6 +7,8 @@ import Nosotros from './components/SobreNosotros';
 import Home from './components/Inicio';
 import NotFound from './components/Error404';
 import Footer from './components/Footer';
+import Recomposicion from './components/recomposicioncorporal';
+import Musculacos from './components/Musculacos';
 
 function App() {
   return (
@@ -18,10 +20,12 @@ function App() {
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
+        <Route path='/recomposicion' element={<Recomposicion />}/>
+        <Route path='/musculacos' element={<Musculacos />}/>
       </Routes>
       <Footer />
     </Router>
-   
+
   );
 }
 
