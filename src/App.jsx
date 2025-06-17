@@ -5,7 +5,7 @@ import Home from './pages/Home.jsx';
 //import Horarios from './pages/Horarios.jsx';
 import Layout from '../src/layouts/Layout.jsx';
 //import Login from './pages/Login.jsx';
-//import Planes from './pages/Planes.jsx';
+import Planes from './pages/Planes.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 //import Registro from './pages/Registro.jsx';
 //import UsuariosAdmin from './pages/UsuariosAdmin.jsx';
@@ -20,7 +20,7 @@ export default function App() {
           {/* <Route path="/contacto" element={<Contacto />} />*/}
           <Route path="*" element={<Error404 />} />
           {/* <Route path="/horarios" element={<Horarios />} /> */}
-          {/* <Route path="/planes-de-entrenamiento" element={<Planes />} /> */}
+          <Route path="/planes-entrenamiento" element={<Planes />} />
           {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/registro" element={<Registro />} /> */}
         </Route>
