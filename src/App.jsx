@@ -9,6 +9,7 @@ import NotFound from './components/Error404';
 import Footer from './components/Footer';
 import Recomposicion from './components/recomposicioncorporal';
 import Musculacos from './components/Musculacos';
+import Publicidad from './components/Publicidad';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path='/recomposicion' element={<Recomposicion />}/>
         <Route path='/musculacos' element={<Musculacos />}/>
+        <Route path='/publicidad' element={<Publicidad />}/>
       </Routes>
       <Footer />
     </Router>

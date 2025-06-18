@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
-import LoginModal from './LoginModal'; // Asegurate de importar el modal correctamente
+import LoginModal from './LoginModal'; 
 import './Nanvar.css';
 
 const NavbarComponent = () => {
@@ -24,9 +24,11 @@ const NavbarComponent = () => {
                         <Nav className="me-auto">
                             <Nav.Link href="/">Inicio</Nav.Link>
                             <Nav.Link href="/nosotros">Sobre nosotros</Nav.Link>
+                            <Nav.Link href="/publicidad">Tienda</Nav.Link>
                             <NavDropdown title="Planes y rutinas" id="collapsible-nav-dropdown" className="dropdown-no-scroll">
                                 <NavDropdown.Item href="/recomposicion">Recomposición</NavDropdown.Item>
                                 <NavDropdown.Item href="/musculacos">Musculacos</NavDropdown.Item>
+                    
                             </NavDropdown>
                         </Nav>
                         <Nav>

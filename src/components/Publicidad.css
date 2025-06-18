@@ -1,0 +1,76 @@
+.pagina-publicidad {
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+    background-color: #eaeaea;
+    padding-top: 200px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.comprar{
+    text-align: center;
+}
+
+.marcass{
+    text-align: center;
+margin-bottom: 30px;
+}
+
+
+
+
+
+.productos {
+    max-width: 100%;
+
+}
+
+.marcas,
+.productos,
+.comentarios {
+    margin-bottom: 2.5rem;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.logos-marcas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.logos-marcas img {
+    width: 100px;
+    height: auto;
+}
+
+.productos ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.productos li::before {
+    content: '🏋️‍♂️ ';
+    margin-right: 0.5rem;
+}
+
+.comentario {
+    margin-top: 1rem;
+    border-left: 4px solid #009688;
+    padding-left: 1rem;
+}
+
+.productos {
+    margin-top: 10px;
+    max-width: 200px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin: 0 auto;
+}
+
+.cartas {
+    background-color: white;
+}
