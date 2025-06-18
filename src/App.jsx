@@ -1,33 +1,29 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AdminApp from './AdminApp';
-// import Contacto from './pages/Contacto.jsx';
-import Error404 from './pages/Error404.jsx';
-import Home from './pages/Home.jsx';
-// import Horarios from './pages/Horarios.jsx';
-import Layout from '../src/layouts/Layout.jsx';
-// import Login from './pages/Login.jsx';
-import Planes from './pages/Planes.jsx';
-import PrivateRoute from './components/PrivateRoute.jsx';
-// import Registro from './pages/Registro.jsx';
-// import UsuariosAdmin from './pages/UsuariosAdmin.jsx';
-// import ClasesAdmin from './pages/ClasesAdmin.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavbarComponent from './components/NavbarComponent';
+import SobreNosotros from './pages/SobreNosotros';
+import Home from './pages/Home';
+import NotFound from './pages/Error404';
+import Footer from './components/Footer';
+import RecomposicionCorporal from './pages/RecomposicionCorporal';
+import Musculacos from './pages/Musculacos';
 
-export default function App() {
+function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index element={<Home />} />
-          {/* <Route path="/contacto" element={<Contacto />} />*/}
-          <Route path="*" element={<Error404 />} />
-          {/* <Route path="/horarios" element={<Horarios />} /> */}
-          <Route path="/planes-entrenamiento" element={<Planes />} />
-          {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/registro" element={<Registro />} /> */}
-        </Route>
+    <Router>
+      <NavbarComponent />
 
-        <Route path="/admin/*" element={<AdminApp />} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/nosotros" element={<SobreNosotros />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/recomposicion" element={<RecomposicionCorporal />} />
+        <Route path="/musculacos" element={<Musculacos />} />
       </Routes>
-    </BrowserRouter>
+      <Footer />
+    </Router>
   );
 }
+
+export default App;

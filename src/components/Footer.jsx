@@ -1,40 +1,39 @@
-import { Container } from 'react-bootstrap';
 import './Footer.css';
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className="footer mt-auto py-3 ">
-      <Container className="caja1">
+      <div className="caja1">
         <img src="src/assets/img/logo.png" alt="logo" className="logo-footer" />
-      </Container>
-      <div className="caja2">
-        <h3> Siguenos</h3>
-        <img className="iconos1" src="src/assets/img/instagram.png" alt="" />
-        <img src="src/assets/img/facebook.png" className="iconos2" alt="" />
       </div>
-      <div class="footer-container">
-        <div class="footer-column">
+      <div className="caja2">
+        <h3 className="seguir"> Siguenos</h3>
+        <img className="iconos1" src="publicsrc/assets/img/instagram.png" alt="" />
+        <img src="publicsrc/assets/img/facebook.png" className="iconos2" alt="" />
+      </div>
+      <div className="footer-container">
+        <div className="footer-column">
           <h3>Acerca de</h3>
           <p>Somos una empresa dedicada a ofrecer soluciones innovadoras para tus necesidades.</p>
         </div>
-        <div class="footer-column">
+        <div className="footer-column">
           <h3>Enlaces</h3>
           <ul>
             <li>
-              <a href="/404">Inicio</a>
+              <a href="#">Inicio</a>
             </li>
             <li>
-              <a href="/404">Servicios</a>
+              <a href="#">Servicios</a>
             </li>
             <li>
-              <a href="/404">Contacto</a>
+              <a href="#">Contacto</a>
             </li>
             <li>
-              <a href="/404">Blog</a>
+              <a href="#">Blog</a>
             </li>
           </ul>
         </div>
-        <div class="footer-column">
+        <div className="footer-column">
           <h3>Contacto</h3>
           <ul>
             <li>
@@ -51,4 +50,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

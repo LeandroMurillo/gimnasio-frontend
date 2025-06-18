@@ -1,36 +1,56 @@
-import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Button from 'react-bootstrap/Button';
+import LoginModal from './LoginModal';
 import './NavbarComponent.css';
 
-export default function NavbarComponent() {
-  return (
-    <div className="navbarcolor">
-      <Navbar bg="light" data-bs-theme="light">
-        <Container>
-          <NavLink to="/">
-            <img
-              src="src/assets/img/logo.png"
-              alt="logo"
-              className="logo"
-            />
-          </NavLink>
+const NavbarComponent = () => {
+  const [showLogin, setShowLogin] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
-          <Navbar.Brand as={NavLink} to="/">
-            Inicio
-          </Navbar.Brand>
-          <Nav className="me-auto">
-            <Navbar.Brand as={NavLink} to="/planes-entrenamiento">
-              Planes y rutinas
-            </Navbar.Brand>
-            <Navbar.Brand as={NavLink} to="/404">
-              Tienda
-            </Navbar.Brand>
-            <Navbar.Brand href="/404">Sucursales </Navbar.Brand>
-          </Nav>
+  return (
+    <>
+      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+        <Container>
+          <a href="/">
+            <img src="src/assets/img/logo.png" alt="logo" className="logo" />
+          </a>
+
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/">Inicio</Nav.Link>
+              <Nav.Link href="/nosotros">Sobre nosotros</Nav.Link>
+              <NavDropdown
+                title="Planes y rutinas"
+                id="collapsible-nav-dropdown"
+                className="dropdown-no-scroll">
+                <NavDropdown.Item href="/recomposicion">Recomposición</NavDropdown.Item>
+                <NavDropdown.Item href="/musculacos">Musculacos</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Nav>
+              <Button
+                variant="outline-primary"
+                onClick={() => setShowLogin(true)}
+                className="login">
+                Acceder
+              </Button>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
-    </div>
+
+      <LoginModal
+        show={showLogin}
+        handleClose={() => setShowLogin(false)}
+        setLoggedIn={setLoggedIn}
+      />
+    </>
   );
-}
+};
+
+export default NavbarComponent;

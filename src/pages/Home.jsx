@@ -1,12 +1,17 @@
 import { Row, Col } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+
 import './Home.css';
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="fondo">
-      <img className="imagen" src="src/assets/img/banner.png" alt="banner" />
+      <img
+        className="imagen"
+        src="src/assets/img/banner gimnasio Rolling.png"
+        alt="banner gimnasio Rolling"
+      />
       <div className="seccion-iglesia">
         <Row className="color-fondotexto">
           <Col md={5} className="text-center text-md-start">
@@ -31,7 +36,6 @@ export default function Home() {
               className="video"
               src="src/assets/video/Gym Rolling Promo_free.mp4"
               controls
-              autoPlay
               loop
               playsInline></video>
           </Col>
@@ -44,15 +48,11 @@ export default function Home() {
             alt=""
           />
           <Card.Body>
-            <Card.Title>Fit Dance</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.
+            <Card.Title className="titulo">Fit Dance</Card.Title>
+            <Card.Text className="color-letras">
+              Clase de ejercicio que combina movimientos de baile con entrenamiento físico
             </Card.Text>
           </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
         </Card>
         <Card className="cartas">
           <img
@@ -60,14 +60,12 @@ export default function Home() {
             alt=""
           />
           <Card.Body>
-            <Card.Title>Smart ABS</Card.Title>
-            <Card.Text>
-              This card has supporting text below as a natural lead-in to additional content.
+            <Card.Title className="titulo">Smart ABS</Card.Title>
+            <Card.Text className="color-letras">
+              Clase grupal de ejercicios enfocada en fortalecer y tonificar la zona media del
+              cuerpo, específicamente los músculos abdominales.
             </Card.Text>
           </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
         </Card>
         <Card className="cartas">
           <img
@@ -75,18 +73,16 @@ export default function Home() {
             alt=""
           />
           <Card.Body>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural lead-in to additional
-              content. This card has even longer content than the first to show that equal height
-              action.
+            <Card.Title className="titulo">Smart Cross</Card.Title>
+            <Card.Text className="color-letras">
+              Entrenamiento funcional que busca trabajar el cuerpo completo a diferencia del
+              entrenamiento de musculación que trabaja un grupo muscular a la vez.
             </Card.Text>
           </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
         </Card>
       </CardGroup>
     </div>
   );
-}
+};
+
+export default Home;

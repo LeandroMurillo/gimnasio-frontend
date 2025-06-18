@@ -7,12 +7,14 @@
   "license": "ISC",
   "type": "module",
   "scripts": {
+    "start": "react-scripts start",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "bootstrap": "^5.3.6",
     "ra-data-simple-rest": "^5.8.4",
     "react": "^19.1.0",
