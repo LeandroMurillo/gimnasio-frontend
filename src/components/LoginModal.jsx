@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs';
 
 const adminUser = {
   email: 'admin@gym.com',
-  passwordHash: bcrypt.hashSync('admin123', 10),
+  passwordHash: bcrypt.hashSync('admin123', 10)
 };
 
 export default function LoginModal({ show, handleClose, setLoggedIn }) {
@@ -22,7 +22,7 @@ export default function LoginModal({ show, handleClose, setLoggedIn }) {
       setError('Credenciales incorrectas');
     }
   };
- 
+
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
@@ -54,8 +54,12 @@ export default function LoginModal({ show, handleClose, setLoggedIn }) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>Cancelar</Button>
-        <Button variant="primary" onClick={handleLogin}>Ingresar</Button>
+        <Button variant="secondary" onClick={handleClose}>
+          Cancelar
+        </Button>
+        <Button variant="primary" onClick={handleLogin}>
+          Ingresar
+        </Button>
       </Modal.Footer>
     </Modal>
   );

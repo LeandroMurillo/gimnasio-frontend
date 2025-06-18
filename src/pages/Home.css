@@ -19,7 +19,6 @@
   width: 100%;
   max-width: 480px;
   height: auto;
-  
 }
 
 .texto {
@@ -59,9 +58,10 @@
   max-width: 350px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   background-color: #fff;
- 
 }
 
 .cartas:hover {
@@ -73,7 +73,6 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
- 
 }
 
 .cartas .card-body {
@@ -106,8 +105,6 @@
   height: 250px;
 }
 
-/* RESPONSIVE */
-
 @media (max-width: 768px) {
   .imagen {
     margin-top: 130px;
@@ -126,7 +123,7 @@
   .video {
     width: 100%;
     max-width: 80vw;
-    margin: auto ;
+    margin: auto;
   }
 
   .cartas {

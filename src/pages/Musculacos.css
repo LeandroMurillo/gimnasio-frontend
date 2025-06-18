@@ -1,9 +1,7 @@
 * {
   overflow-x: hidden;
 }
-
 .imagen {
-
   width: 100%;
 
   height: auto;
@@ -21,12 +19,7 @@
 
     max-width: 700px;
   }
-
 }
-
-/* .seccion-iglesia{
-  max-width: max-content;
-} */
 
 .fondo {
   background-color: #eaeaea;
@@ -36,34 +29,32 @@
   margin-top: 40px;
   margin-left: 60px;
   border-radius: 30px;
-
 }
 
 .texto {
   margin-top: 40px;
   margin-left: 30px;
-
 }
 
 .color-fondotexto {
   background-color: #eaeaea;
- 
 }
 
 .color-titulo {
   color: black;
-  text-align: center ;
+  text-align: center;
 }
 
 .card-group {
   background-color: #eaeaea;
-
 }
 
 .cartas {
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   margin: 1rem;
   background-color: #fff;
 }
@@ -103,29 +94,10 @@
   font-size: 0.8rem;
   color: #888;
 }
-.titulo{
+.titulo {
   background-color: orange;
   border-radius: 6px;
 }
-.color-letras{
+.color-letras {
   color: rgba(0, 0, 0, 0.842) !important;
-}
-@media (max-width: 768px) {
-  .texto {
-      margin-left: 0 !important;
-    font-size: 0.95rem;
-    padding: 1rem;
-    text-align: left;
-   
-  }
-
-  .color-titulo {
-   font-size: 1.3rem;
-    padding: 0 1rem;
- 
-  }
-
-  .color-fondotexto {
-    padding: 1rem 0.5rem;
-  }
 }
