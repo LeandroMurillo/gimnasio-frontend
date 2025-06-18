@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { FaRobot } from 'react-icons/fa';
 import Chatbot from 'react-chatbot-kit';
 import 'react-chatbot-kit/build/main.css';
 
@@ -29,8 +28,7 @@ export default function ChatbotContainer() {
         variant="primary"
         className="position-fixed bottom-0 end-0 m-3 rounded-pill d-flex align-items-center"
         style={{ zIndex: 1100, padding: '0.5rem 1rem' }}>
-        <span className="me-2">¿Necesitas ayuda? Preguntale a GymBot</span>
-        <FaRobot size={20} />
+        <span className="me-2">¿Necesitas ayuda? Preguntale a GymBot 🤖</span>
       </Button>
     </>
   );
