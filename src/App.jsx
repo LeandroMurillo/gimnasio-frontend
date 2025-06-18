@@ -5,8 +5,9 @@ import NotFound from './pages/Error404';
 import RecomposicionCorporal from './pages/RecomposicionCorporal';
 import Musculacos from './pages/Musculacos';
 import Layout from './layouts/Layout';
+import AdminApp from './AdminApp';
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Routes>
@@ -17,10 +18,9 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/recomposicion" element={<RecomposicionCorporal />} />
           <Route path="/musculacos" element={<Musculacos />} />
+          <Route path="/admin/*" element={<AdminApp />} />
         </Route>
       </Routes>
     </Router>
   );
 }
-
-export default App;
