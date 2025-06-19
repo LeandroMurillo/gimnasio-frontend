@@ -1,34 +1,30 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-//import Contacto from './pages/Contacto.jsx';
-//import Error404 from './pages/Error404.jsx';
-import Home from './pages/Home.jsx';
-//import Horarios from './pages/Horarios.jsx';
-import Layout from '../src/layouts/Layout.jsx';
-//import Login from './pages/Login.jsx';
-//import Planes from './pages/Planes.jsx';
-import PrivateRoute from './components/PrivateRoute.jsx';
-//import Registro from './pages/Registro.jsx';
-//import UsuariosAdmin from './pages/UsuariosAdmin.jsx';
-//import ClasesAdmin from './pages/ClasesAdmin.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SobreNosotros from './pages/SobreNosotros';
+import Home from './pages/Home';
+import NotFound from './pages/Error404';
+import RecomposicionCorporal from './pages/RecomposicionCorporal';
+import Musculacos from './pages/Musculacos';
+import Layout from './layouts/Layout';
+import Planes from './pages/Planes';
+import AdminApp from './AdminApp';
+import Horarios from './pages/Horarios';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<Home />} />
-          {/* <Route path="/contacto" element={<Contacto />} />
-          {/* <Route path="*" element={<Error404 />} /> */}
-          {/* <Route path="/horarios" element={<Horarios />} /> */}
-          {/* <Route path="/planes-de-entrenamiento" element={<Planes />} /> */}
-          {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/registro" element={<Registro />} /> */}
-        </Route>
-        <Route path="/admin/*" element={<PrivateRoute />}>
-          {/* <Route path="usuarios" element={<UsuariosAdmin />} /> */}
-          {/* <Route path="clases" element={<ClasesAdmin />} /> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/nosotros" element={<SobreNosotros />} />
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/recomposicion" element={<RecomposicionCorporal />} />
+          <Route path="/musculacos" element={<Musculacos />} />
+          <Route path="/admin/*" element={<AdminApp />} />
+          <Route path="/planes-entrenamiento" element={<Planes />} />
+          <Route path="/horarios" element={<Horarios />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
