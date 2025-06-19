@@ -32,7 +32,7 @@ const RecomposicionCorporal = () => {
       </div>
       <CardGroup>
         <Card className="cartas">
-          <img src="src/assets/img/sentadillas-1072392408.webp" alt="" />
+          <img src="/img/sentadillas-1072392408.webp" alt="" />
           <Card.Body>
             <Card.Title className="titulo">Sentadillas</Card.Title>
             <Card.Text className="color-letras">
@@ -43,7 +43,7 @@ const RecomposicionCorporal = () => {
         </Card>
         <Card className="cartas">
           <img
-            src="src/assets/img/dr-joe-demarco-attempts-to-break-the-world-record-for-the-news-photo-1655810983.jpg"
+            src="/img/dr-joe-demarco-attempts-to-break-the-world-record-for-the-news-photo-1655810983.jpg"
             alt=""
           />
           <Card.Body>
@@ -54,7 +54,7 @@ const RecomposicionCorporal = () => {
           </Card.Body>
         </Card>
         <Card className="cartas">
-          <img src="src/assets/img/16920356482804.jpg" alt="" />
+          <img src="/img/16920356482804.jpg" alt="" />
           <Card.Body>
             <Card.Title className="titulo">Dominadas</Card.Title>
             <Card.Text className="color-letras">

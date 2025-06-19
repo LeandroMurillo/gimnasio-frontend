@@ -9,7 +9,7 @@ const Home = () => {
     <div className="fondo">
       <img
         className="imagen"
-        src="src/assets/img/banner gimnasio Rolling.png"
+        src="/img/banner gimnasio Rolling.png"
         alt="banner gimnasio Rolling"
       />
       <div className="seccion-iglesia">
@@ -34,7 +34,7 @@ const Home = () => {
           <Col md={5} className="text-center my-3 my-md-0">
             <video
               className="video"
-              src="src/assets/video/Gym Rolling Promo_free.mp4"
+              src="/video/Gym Rolling Promo_free.mp4"
               controls
               loop
               playsInline></video>

@@ -16,7 +16,7 @@ const NavbarComponent = () => {
       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
         <Container>
           <a href="/">
-            <img src="src/assets/img/logo.png" alt="logo" className="logo" />
+            <img src="/img/logo.png" alt="logo" className="logo" />
           </a>
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

@@ -4,12 +4,12 @@ const Footer = () => {
   return (
     <footer className="footer mt-auto py-3 ">
       <div className="caja1">
-        <img src="src/assets/img/logo.png" alt="logo" className="logo-footer" />
+        <img src="/img/logo.png" alt="logo" className="logo-footer" />
       </div>
       <div className="caja2">
         <h3 className="seguir"> Siguenos</h3>
-        <img className="iconos1" src="publicsrc/assets/img/instagram.png" alt="" />
-        <img src="publicsrc/assets/img/facebook.png" className="iconos2" alt="" />
+        <img className="iconos1" src="public/img/instagram.png" alt="" />
+        <img src="public/img/facebook.png" className="iconos2" alt="" />
       </div>
       <div className="footer-container">
         <div className="footer-column">

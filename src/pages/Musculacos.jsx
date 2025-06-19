@@ -6,7 +6,7 @@ import './Musculacos.css';
 const Musculacos = () => {
   return (
     <div className="fondo">
-      <img className="imagen" src="src/assets/img/615883260.webp" alt="" />
+      <img className="imagen" src="/img/615883260.webp" alt="" />
       <div className="seccion-iglesia">
         <Row className="color-fondotexto">
           <section className="texto">
@@ -43,21 +43,21 @@ const Musculacos = () => {
       </div>
       <CardGroup>
         <Card className="cartas">
-          <img src="src/assets/img/push_empuje1645691939767-1657194936028-1024x576.png" alt="" />
+          <img src="/img/push_empuje1645691939767-1657194936028-1024x576.png" alt="" />
           <Card.Body>
             <Card.Title className="titulo">PUSH - EMPUJE</Card.Title>
             <Card.Text className="color-letras">Pectoral, tríceps y hombro.</Card.Text>
           </Card.Body>
         </Card>
         <Card className="cartas">
-          <img src="src/assets/img/pull_traccion1645691939759-1657194936024-1024x576.png" alt="" />
+          <img src="/img/pull_traccion1645691939759-1657194936024-1024x576.png" alt="" />
           <Card.Body>
             <Card.Title className="titulo">PULL - TRACCIÓN</Card.Title>
             <Card.Text className="color-letras">Espalda y bíceps.</Card.Text>
           </Card.Body>
         </Card>
         <Card className="cartas">
-          <img src="src/assets/img/pierna1645691939773-1657194936019-1024x576.png" alt="" />
+          <img src="/img/pierna1645691939773-1657194936019-1024x576.png" alt="" />
           <Card.Body>
             <Card.Title className="titulo">LEG - PIERNA</Card.Title>
             <Card.Text className="color-letras">
