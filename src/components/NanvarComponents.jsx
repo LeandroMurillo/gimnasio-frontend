@@ -38,7 +38,7 @@ const NavbarComponent = () => {
                 </Container>
             </Navbar>
 
-            {/* Modal de Login */}
+            
             <LoginModal
                 show={showLogin}
                 handleClose={() => setShowLogin(false)}

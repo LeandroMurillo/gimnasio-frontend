@@ -4,16 +4,21 @@ import { Row, Col } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './Publicidad.css';
-
+import adidas from '../assets/img/adidas-logo-black-symbol-clothes-design-icon-abstract-football-illustration-with-white-background-free-vector.jpg'
+import under from '../assets/img/Under_armour_logo.svg.png'
+import nike from '../assets/img/images.png'
+import proteina from '../assets/img/156495-800-auto.png'
+import botellas from '../assets/img/sport.jpg'
+import guantes from '../assets/img/dgamgu009b-m-guante-de-fitness-king-2-0-_-drb-m-0eb83b3de388166a0517265016471273-1024-1024.jpg'
 const Publicidad = () => {
     return (
         <div className="pagina-publicidad">
             <section className="marcas">
                 <h2 className='marcass'>Marcas que nos acompañan:</h2>
                 <div className="logos-marcas">
-                    <img src="/img/images.png" alt="Nike" />
-                    <img src="/img/adidas-logo-black-symbol-clothes-design-icon-abstract-football-illustration-with-white-background-free-vector.jpg" alt="Adidas" />
-                    <img className="under" src="/img/Under_armour_logo.svg.png" alt="Under Armour" />
+                    <img src={nike} alt="Nike" />
+                    <img src={adidas} alt="Adidas" />
+                    <img className="under" src={under}alt="Under Armour" />
                 </div>
             </section>
 
@@ -27,7 +32,7 @@ const Publicidad = () => {
         </ul> */}
             <CardGroup>
                 <Card className='cartas'>
-                    <img src="/img/156495-800-auto.png" alt="" className='productos' />
+                    <img src={proteina} alt="" className='productos' />
                     <Card.Body>
                         <Card.Title className='titulo'>Proteína Whey - Vainilla / Chocolate</Card.Title>
                         <Card.Text className='color-letras'>
@@ -37,7 +42,7 @@ const Publicidad = () => {
 
                 </Card>
                 <Card className='cartas'>
-                    <img src="/img/sport.jpg" alt="" className='productos' />
+                    <img src={botellas} alt="" className='productos' />
                     <Card.Body>
                         <Card.Title className='titulo'>Botellas reutilizables Rolling</Card.Title>
                         <Card.Text className='color-letras'>
@@ -47,7 +52,7 @@ const Publicidad = () => {
 
                 </Card>
                 <Card className='cartas'>
-                    <img className='productos' src="/img/dgamgu009b-m-guante-de-fitness-king-2-0-_-drb-m-0eb83b3de388166a0517265016471273-1024-1024.jpg" alt="" />
+                    <img className='productos' src={guantes} alt="" />
                     <Card.Body>
                         <Card.Title className='titulo'>Guantes de entrenamiento</Card.Title>
                         <Card.Text className='color-letras'>
