@@ -1,35 +1,26 @@
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
 import Chatbot from 'react-chatbot-kit';
 import 'react-chatbot-kit/build/main.css';
-
 import config from './ChatbotConfig';
 import MessageParser from './messageParser';
 import ActionProvider from './actionProvider';
+import imgChatbot from '../assets/img/depositphotos_224075966-stock-illustration-cute-smiling-robot-chat-bot.jpg';
+import './ChatbotContainer.css';
 
 export default function ChatbotContainer() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <div
-        className="position-fixed end-0 me-3 shadow"
-        style={{
-          zIndex: 1050,
-          maxWidth: '370px',
-          bottom: '80px',
-          display: isOpen ? 'block' : 'none'
-        }}>
-        <Chatbot config={config} messageParser={MessageParser} actionProvider={ActionProvider} />
-      </div>
+      {isOpen && (
+        <div className="chatbot-container">
+          <Chatbot config={config} actionProvider={ActionProvider} messageParser={MessageParser} />
+        </div>
+      )}
 
-      <Button
-        onClick={() => setIsOpen((prev) => !prev)}
-        variant="primary"
-        className="position-fixed bottom-0 end-0 m-3 rounded-pill d-flex align-items-center"
-        style={{ zIndex: 1100, padding: '0.5rem 1rem' }}>
-        <span className="me-2">¿Necesitas ayuda? Preguntale a GymBot 🤖</span>
-      </Button>
+      <button className="chat-toggle-button" onClick={() => setIsOpen((prev) => !prev)}>
+        <img src={imgChatbot} alt="Abrir chatbot" style={{ width: '60px', height: '60px' }} />
+      </button>
     </>
   );
 }
