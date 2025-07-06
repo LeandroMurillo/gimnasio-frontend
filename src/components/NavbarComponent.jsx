@@ -31,6 +31,8 @@ const NavbarComponent = () => {
                 <NavDropdown.Item href="/recomposicion">Recomposición</NavDropdown.Item>
                 <NavDropdown.Item href="/musculacos">Musculacos</NavDropdown.Item>
               </NavDropdown>
+                    <Nav.Link href="/publicidad">Extras</Nav.Link>
+              <Nav.Link href="/contacto">Contacto</Nav.Link>
             </Nav>
             <Nav>
               <Button

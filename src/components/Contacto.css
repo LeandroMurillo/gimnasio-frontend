@@ -1,0 +1,69 @@
+.contacto2-container {
+     margin-top: 130px; /* Ajustá la cantidad según lo que necesites */
+    background-color: #eaeaea;
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #444;
+}
+
+.contacto2-container h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.subtitulo {
+  color: #f46900;
+  margin-bottom: 1rem;
+}
+
+.contacto2-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: start;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+.info-bloque {
+  width: 260px;
+  padding: 1rem;
+}
+
+.info-bloque img {
+  height: 40px;
+  margin-bottom: 0.5rem;
+}
+
+.info-bloque h3 {
+  margin-bottom: 0.3rem;
+  color: #f46900;
+}
+
+.logo-rolling img {
+  height: 140px;
+  margin-top: 1rem;
+  border-radius: 10px;
+
+}
+
+hr {
+  width: 60%;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+@media (max-width: 768px) {
+  .contacto2-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-bloque {
+    width: 90%;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+  }
+}
