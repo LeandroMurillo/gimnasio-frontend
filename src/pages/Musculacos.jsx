@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './Musculacos.css';
 
-const Musculacos = () => {
+export default function Musculacos() {
   return (
     <div className="fondo">
       <img className="imagen" src="src/assets/img/615883260.webp" alt="" />
@@ -68,6 +68,4 @@ const Musculacos = () => {
       </CardGroup>
     </div>
   );
-};
-
-export default Musculacos;
+}

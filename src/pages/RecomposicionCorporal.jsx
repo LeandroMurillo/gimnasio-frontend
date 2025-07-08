@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './RecomposicionCorporal.css';
 
-const RecomposicionCorporal = () => {
+export default function RecomposicionCorporal() {
   return (
     <div className="fondo">
       <img className="imagen" src="img/1140-exercise-class-esp.jpg" alt="" />
@@ -66,5 +66,3 @@ const RecomposicionCorporal = () => {
     </div>
   );
 };
-
-export default RecomposicionCorporal;

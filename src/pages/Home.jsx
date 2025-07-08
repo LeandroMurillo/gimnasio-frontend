@@ -1,89 +1,79 @@
-import { Row, Col } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
+import { Row, Col, Card, CardGroup } from 'react-bootstrap';
+import MarcasAsociadas from '../components/MarcasAsociadas';
+import ProductosDestacados from '../components/ProductosDestacados';
+import banner from '../assets/img/banner gimnasio Rolling.png';
+import promoVideo from '../assets/video/Gym Rolling Promo_free.mp4';
 
-import './Home.css';
+const clasesPopulares = [
+  {
+    titulo: 'Fit Dance',
+    descripcion: 'Clase de ejercicio que combina movimientos de baile con entrenamiento físico.',
+    imagen:
+      'https://assets3.smartfit.com.br/assets/new-home-v4-assets/aulas/fitdance-cover-ar.webp',
+    alt: 'Clase Fit Dance'
+  },
+  {
+    titulo: 'Smart ABS',
+    descripcion: 'Clase grupal enfocada en fortalecer y tonificar los músculos abdominales.',
+    imagen:
+      'https://assets3.smartfit.com.br/assets/new-home-v4-assets/aulas/abdominal-cover-ar.webp',
+    alt: 'Clase Smart ABS'
+  },
+  {
+    titulo: 'Smart Cross',
+    descripcion: 'Entrenamiento funcional que trabaja el cuerpo completo.',
+    imagen:
+      'https://assets3.smartfit.com.br/assets/new-home-v4-assets/aulas/smart-cross-cover-ar.webp',
+    alt: 'Clase Smart Cross'
+  }
+];
 
-const Home = () => {
+export default function Home() {
   return (
-    <div className="fondo">
-      <img
-        className="imagen"
-        src="src/assets/img/banner gimnasio Rolling.png"
-        alt="banner gimnasio Rolling"
-      />
-      <div className="seccion-iglesia">
-        <Row className="color-fondotexto">
-          <Col md={5} className="text-center text-md-start">
-            <section className="texto">
-              <h2 className="color-titulo">¡Transforma tu cuerpo en Rolling!</h2>
-              <p>
-                En Gimnasio Rolling te ayudamos a alcanzar tus metas con los mejores entrenadores,
-                equipos de última generación y un ambiente motivador.
-              </p>
-              <p>
-                Ya sea que quieras ganar músculo, bajar de peso o simplemente sentirte mejor contigo
-                mismo, Rolling es tu lugar.
-              </p>
-              <li> Planes accesibles</li>
-              <li> Rutinas personalizadas</li>
+    <div>
+      <img src={banner} alt="Banner del gimnasio Rolling" className="banner" />
+
+      <MarcasAsociadas />
+
+      <Row className="my-4">
+        <Col md={6}>
+          <section>
+            <h2>¡Transforma tu cuerpo en Rolling!</h2>
+            <p>
+              En Gimnasio Rolling te ayudamos a alcanzar tus metas con los mejores entrenadores,
+              equipos de última generación y un ambiente motivador.
+            </p>
+            <p>
+              Ya sea que quieras ganar músculo, bajar de peso o simplemente sentirte mejor contigo
+              mismo, Rolling es tu lugar.
+            </p>
+            <ul>
+              <li>Planes accesibles</li>
+              <li>Rutinas personalizadas</li>
               <li>Clases grupales: funcional, spinning, yoga y más</li>
-              <li>¡Abierto los 7 días de la semana! </li>
-            </section>
-          </Col>
-          <Col md={5} className="text-center my-3 my-md-0">
-            <video
-              className="video"
-              src="src/assets/video/Gym Rolling Promo_free.mp4"
-              controls
-              loop
-              playsInline></video>
-          </Col>
-        </Row>
-      </div>
-      <CardGroup>
-        <Card className="cartas">
-          <img
-            src="https://assets3.smartfit.com.br/assets/new-home-v4-assets/aulas/fitdance-cover-ar.webp"
-            alt=""
-          />
-          <Card.Body>
-            <Card.Title className="titulo">Fit Dance</Card.Title>
-            <Card.Text className="color-letras">
-              Clase de ejercicio que combina movimientos de baile con entrenamiento físico
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        <Card className="cartas">
-          <img
-            src="https://assets3.smartfit.com.br/assets/new-home-v4-assets/aulas/abdominal-cover-ar.webp"
-            alt=""
-          />
-          <Card.Body>
-            <Card.Title className="titulo">Smart ABS</Card.Title>
-            <Card.Text className="color-letras">
-              Clase grupal de ejercicios enfocada en fortalecer y tonificar la zona media del
-              cuerpo, específicamente los músculos abdominales.
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        <Card className="cartas">
-          <img
-            src="https://assets3.smartfit.com.br/assets/new-home-v4-assets/aulas/smart-cross-cover-ar.webp"
-            alt=""
-          />
-          <Card.Body>
-            <Card.Title className="titulo">Smart Cross</Card.Title>
-            <Card.Text className="color-letras">
-              Entrenamiento funcional que busca trabajar el cuerpo completo a diferencia del
-              entrenamiento de musculación que trabaja un grupo muscular a la vez.
-            </Card.Text>
-          </Card.Body>
-        </Card>
+              <li>¡Abierto los 7 días de la semana!</li>
+            </ul>
+          </section>
+        </Col>
+
+        <Col md={6}>
+          <video src={promoVideo} controls loop playsInline className="video-home" />
+        </Col>
+      </Row>
+
+      <CardGroup className="mb-5">
+        {clasesPopulares.map((clase, index) => (
+          <Card key={index}>
+            <Card.Img variant="top" src={clase.imagen} alt={clase.alt} />
+            <Card.Body>
+              <Card.Title>{clase.titulo}</Card.Title>
+              <Card.Text>{clase.descripcion}</Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
       </CardGroup>
 
+      <ProductosDestacados />
     </div>
   );
-};
-
-export default Home;
+}

@@ -1,5 +1,4 @@
 import { Card, CardGroup } from 'react-bootstrap';
-import './Publicidad.css';
 
 import proteina from '../assets/img/156495-800-auto.png';
 import botellas from '../assets/img/sport.jpg';
@@ -43,25 +42,25 @@ const comentarios = [
 
 export default function ProductosDestacados() {
   return (
-    <section className="productos-destacados">
-      <h2 className="titulo-seccion">Productos disponibles en Rolling Gym</h2>
+    <section>
+      <h2>Productos disponibles en Rolling Gym</h2>
 
       <CardGroup>
         {productos.map((prod, i) => (
-          <Card key={i} className="producto-card">
-            <img src={prod.src} alt={prod.titulo} className="producto-img" />
+          <Card key={i}>
+            <img src={prod.src} alt={prod.titulo} />
             <Card.Body>
-              <Card.Title className="producto-titulo">{prod.titulo}</Card.Title>
-              <Card.Text className="producto-descripcion">{prod.descripcion}</Card.Text>
+              <Card.Title>{prod.titulo}</Card.Title>
+              <Card.Text>{prod.descripcion}</Card.Text>
             </Card.Body>
           </Card>
         ))}
       </CardGroup>
 
-      <div className="comentarios">
-        <h2 className="titulo-seccion">Lo que dicen nuestros clientes:</h2>
+      <div>
+        <h2>Lo que dicen nuestros clientes:</h2>
         {comentarios.map((c, i) => (
-          <div key={i} className="comentario">
+          <div key={i}>
             <p>{c.texto}</p>
             <span>- {c.autor}</span>
           </div>

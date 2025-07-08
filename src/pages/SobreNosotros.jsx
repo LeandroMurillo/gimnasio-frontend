@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './SobreNosotros.css';
 
-const SobreNosotros = () => {
+export default function SobreNosotros() {
   return (
     <section className="sobre-nosotros">
       <h2>¿Quienes somos?</h2>
@@ -95,6 +95,4 @@ const SobreNosotros = () => {
       </CardGroup>
     </section>
   );
-};
-
-export default SobreNosotros;
+}
