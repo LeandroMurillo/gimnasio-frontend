@@ -1,0 +1,13 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  list-style: none;
+  overflow: visible;
+  display: block;
+}

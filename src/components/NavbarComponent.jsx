@@ -1,43 +1,65 @@
 import { useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/Button';
+import { Container, Nav, Navbar, NavDropdown, Button, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
-import './NavbarComponent.css';
+import ClimaActual from './ClimaActual';
 
-const NavbarComponent = () => {
+export default function NavbarComponent() {
   const [showLogin, setShowLogin] = useState(false);
-  const [isLoggedIn, setLoggedIn] = useState(false);
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Navbar
+        expand="lg"
+        style={{
+          backgroundColor: '#ebe5d8'
+        }}>
         <Container>
-          <a href="/">
-            <img src="src/assets/img/logo.png" alt="logo" className="logo" />
-          </a>
+          <Navbar.Brand as={Link} to="/">
+            <Image
+              src="src/assets/img/logo.png"
+              rounded
+              style={{
+                height: '80px',
+                marginRight: '15px',
+                objectFit: 'cover'
+              }}
+            />
+          </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/">Inicio</Nav.Link>
-              <Nav.Link href="/nosotros">Sobre nosotros</Nav.Link>
-              <NavDropdown
-                title="Planes y rutinas"
-                id="collapsible-nav-dropdown"
-                className="dropdown-no-scroll">
-                <NavDropdown.Item href="/recomposicion">Recomposición</NavDropdown.Item>
-                <NavDropdown.Item href="/musculacos">Musculacos</NavDropdown.Item>
+            <Nav className="align-items-center me-auto">
+              <Nav.Link as={Link} to="/">
+                Inicio
+              </Nav.Link>
+              <Nav.Link as={Link} to="/planes">
+                Planes
+              </Nav.Link>
+              <Nav.Link as={Link} to="/horarios">
+                Horarios
+              </Nav.Link>
+              <Nav.Link as={Link} to="/nosotros">
+                Sobre nosotros
+              </Nav.Link>
+
+              <NavDropdown title="Planes y rutinas" id="nav-dropdown" popper={false}>
+                <NavDropdown.Item as={Link} to="/recomposicion">
+                  Recomposición
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/musculacos">
+                  Musculacos
+                </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="/contacto">Contacto</Nav.Link>
+
+              <Nav.Link as={Link} to="/contacto">
+                Contacto
+              </Nav.Link>
             </Nav>
-            <Nav>
-              <Button
-                variant="outline-primary"
-                onClick={() => setShowLogin(true)}
-                className="login">
+
+            <Nav className="align-items-center">
+              <ClimaActual />
+              <Button variant="warning" className="fw-bold ms-3" onClick={() => setShowLogin(true)}>
                 Acceder
               </Button>
             </Nav>
@@ -45,13 +67,7 @@ const NavbarComponent = () => {
         </Container>
       </Navbar>
 
-      <LoginModal
-        show={showLogin}
-        handleClose={() => setShowLogin(false)}
-        setLoggedIn={setLoggedIn}
-      />
+      <LoginModal show={showLogin} handleClose={() => setShowLogin(false)} />
     </>
   );
-};
-
-export default NavbarComponent;
+}

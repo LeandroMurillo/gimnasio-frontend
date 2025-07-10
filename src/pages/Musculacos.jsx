@@ -1,18 +1,19 @@
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
-import './Musculacos.css';
+import Image from 'react-bootstrap/Image';
+
+import bannerMusculacos from '../assets/img/BannerMusculacos.webp';
 
 export default function Musculacos() {
   return (
-    <div className="fondo">
-      <img className="imagen" src="src/assets/img/615883260.webp" alt="" />
-      <div className="seccion-iglesia">
-        <Row className="color-fondotexto">
-          <section className="texto">
-            <h2 className="color-titulo">
-              ¡¡LLEVA TUS MÚSCULOS AL SIGUIENTE NIVEL TÚ ELIGES EL NIVEL DE DESAFÍO!!
-            </h2>
+    <Container>
+      <Image src={bannerMusculacos} alt="banner_musculacos" fluid />
+      <div>
+        <Row>
+          <section>
+            <h2>¡¡LLEVA TUS MÚSCULOS AL SIGUIENTE NIVEL TÚ ELIGES EL NIVEL DE DESAFÍO!!</h2>
             <p>
               Contamos con dos planes de <strong>Musculacos</strong>, para que todo el mundo pueda
               darle caña a esos músculos y os pongáis más fuertes que el vinagre sin perder la
@@ -42,30 +43,28 @@ export default function Musculacos() {
         </Row>
       </div>
       <CardGroup>
-        <Card className="cartas">
+        <Card>
           <img src="src/assets/img/push_empuje1645691939767-1657194936028-1024x576.png" alt="" />
           <Card.Body>
-            <Card.Title className="titulo">PUSH - EMPUJE</Card.Title>
-            <Card.Text className="color-letras">Pectoral, tríceps y hombro.</Card.Text>
+            <Card.Title>PUSH - EMPUJE</Card.Title>
+            <Card.Text>Pectoral, tríceps y hombro.</Card.Text>
           </Card.Body>
         </Card>
-        <Card className="cartas">
+        <Card>
           <img src="src/assets/img/pull_traccion1645691939759-1657194936024-1024x576.png" alt="" />
           <Card.Body>
-            <Card.Title className="titulo">PULL - TRACCIÓN</Card.Title>
-            <Card.Text className="color-letras">Espalda y bíceps.</Card.Text>
+            <Card.Title>PULL - TRACCIÓN</Card.Title>
+            <Card.Text>Espalda y bíceps.</Card.Text>
           </Card.Body>
         </Card>
-        <Card className="cartas">
+        <Card>
           <img src="src/assets/img/pierna1645691939773-1657194936019-1024x576.png" alt="" />
           <Card.Body>
-            <Card.Title className="titulo">LEG - PIERNA</Card.Title>
-            <Card.Text className="color-letras">
-              Cuádriceps, isquios, glúteos y pierna en general.
-            </Card.Text>
+            <Card.Title>LEG - PIERNA</Card.Title>
+            <Card.Text>Cuádriceps, isquios, glúteos y pierna en general.</Card.Text>
           </Card.Body>
         </Card>
       </CardGroup>
-    </div>
+    </Container>
   );
 }

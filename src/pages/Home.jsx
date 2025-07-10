@@ -1,4 +1,10 @@
-import { Row, Col, Card, CardGroup } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+
 import MarcasAsociadas from '../components/MarcasAsociadas';
 import ProductosDestacados from '../components/ProductosDestacados';
 import banner from '../assets/img/banner gimnasio Rolling.png';
@@ -30,37 +36,29 @@ const clasesPopulares = [
 
 export default function Home() {
   return (
-    <div>
-      <img src={banner} alt="Banner del gimnasio Rolling" className="banner" />
-
-      <MarcasAsociadas />
-
+    <Container>
+      <Image src={banner} alt="Banner del gimnasio Rolling" fluid />
       <Row className="my-4">
         <Col md={6}>
-          <section>
-            <h2>¡Transforma tu cuerpo en Rolling!</h2>
-            <p>
-              En Gimnasio Rolling te ayudamos a alcanzar tus metas con los mejores entrenadores,
-              equipos de última generación y un ambiente motivador.
-            </p>
-            <p>
-              Ya sea que quieras ganar músculo, bajar de peso o simplemente sentirte mejor contigo
-              mismo, Rolling es tu lugar.
-            </p>
-            <ul>
-              <li>Planes accesibles</li>
-              <li>Rutinas personalizadas</li>
-              <li>Clases grupales: funcional, spinning, yoga y más</li>
-              <li>¡Abierto los 7 días de la semana!</li>
-            </ul>
-          </section>
+          <p>¡Transforma tu cuerpo en Rolling!</p>
+          <p>
+            En Gimnasio Rolling te ayudamos a alcanzar tus metas con los mejores entrenadores,
+            equipos de última generación y un ambiente motivador. <br />
+            Ya sea que quieras ganar músculo, bajar de peso o simplemente sentirte mejor contigo
+            mismo, Rolling es tu lugar.
+          </p>
+          <ul>
+            <li>Planes accesibles</li>
+            <li>Rutinas personalizadas</li>
+            <li>Clases grupales: funcional, spinning, yoga y más</li>
+            <li>¡Abierto los 7 días de la semana!</li>
+          </ul>
         </Col>
 
         <Col md={6}>
           <video src={promoVideo} controls loop playsInline className="video-home" />
         </Col>
       </Row>
-
       <CardGroup className="mb-5">
         {clasesPopulares.map((clase, index) => (
           <Card key={index}>
@@ -72,8 +70,8 @@ export default function Home() {
           </Card>
         ))}
       </CardGroup>
-
       <ProductosDestacados />
-    </div>
+      <MarcasAsociadas />
+    </Container>
   );
 }

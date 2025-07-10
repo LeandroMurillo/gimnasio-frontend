@@ -1,8 +1,9 @@
 import './Footer.css';
-import  logo from '../assets/img/logo.png'
-import  fasebook from '../assets/img/facebook.png'
-import  instagram from '../assets/img/instagram.png'
-const Footer = () => {
+import logo from '../assets/img/logo.png';
+import fasebook from '../assets/img/facebook.png';
+import instagram from '../assets/img/instagram.png';
+
+export default function Footer() {
   return (
     <footer className="footer mt-auto py-3 ">
       <div className="caja1">
@@ -52,6 +53,4 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

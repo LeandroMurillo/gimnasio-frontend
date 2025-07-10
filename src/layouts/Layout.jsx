@@ -7,10 +7,7 @@ export default function Layout() {
   return (
     <>
       <NavbarComponent />
-      <main className="mt-5 pt-5" style={{ marginTop: '165px' }}>
-        <Outlet />
-      </main>
-      <ChatbotContainer />
+      <Outlet />
       <Footer />
     </>
   );

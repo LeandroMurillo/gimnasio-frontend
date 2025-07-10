@@ -1,8 +1,8 @@
-import './Contacto.css';
+import { useState } from 'react';
+import { Container, Row, Col, Form, Button, Card, Image } from 'react-bootstrap';
 import iconoCasa from '../assets/img/icone-de-la-maison-orange.png';
 import iconoGmail from '../assets/img/icone-gmail-logo-png-orange.png';
 import iconoComentario from '../assets/img/icone-de-commentaire-et-de-retroaction-orange.png';
-import { useState } from 'react';
 
 export default function Contacto() {
   const [formData, setFormData] = useState({
@@ -25,86 +25,95 @@ export default function Contacto() {
   };
 
   return (
-    <div className="contacto2-container">
-      <h2>Contacta con nosotros</h2>
-      <p className="subtitulo">Rellená nuestro formulario o llamanos por teléfono</p>
+    <Container className="py-3">
+      <h2 className="text-center mb-3">Contacta con nosotros</h2>
+      <p className="text-center text-muted">Rellená nuestro formulario o llamanos por teléfono</p>
       <hr />
 
-      <div className="contacto2-content">
-        <div className="formulario-contacto">
+      <Row className="mt-4">
+        <Col md={6}>
           <h3>Envíanos un mensaje</h3>
-
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="nombre">Nombre</label>
-              <input
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="nombre">
+              <Form.Label>Nombre</Form.Label>
+              <Form.Control
                 type="text"
-                id="nombre"
                 name="nombre"
                 value={formData.nombre}
                 onChange={handleChange}
                 required
               />
-            </div>
+            </Form.Group>
 
-            <div className="form-group">
-              <label htmlFor="email">Correo electrónico</label>
-              <input
+            <Form.Group className="mb-3" controlId="email">
+              <Form.Label>Correo electrónico</Form.Label>
+              <Form.Control
                 type="email"
-                id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
               />
-            </div>
+            </Form.Group>
 
-            <div className="form-group">
-              <label htmlFor="mensaje">Mensaje</label>
-              <textarea
-                id="mensaje"
+            <Form.Group className="mb-3" controlId="mensaje">
+              <Form.Label>Mensaje</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={4}
                 name="mensaje"
-                rows="4"
                 value={formData.mensaje}
                 onChange={handleChange}
                 required
               />
-            </div>
+            </Form.Group>
 
-            <button type="submit" className="boton-enviar">
+            <Button type="submit" variant="primary">
               Enviar
-            </button>
-          </form>
-        </div>
+            </Button>
+          </Form>
+        </Col>
 
-        <div className="contacto2-info">
-          <div className="info-bloque">
-            <img src={iconoCasa} alt="Nuestra ubicación" />
-            <h3>Nuestra sede</h3>
-            <p>
-              Av. Fitness 123
-              <br />
-              Yerba Buena, Tucumán
-            </p>
-          </div>
+        <Col md={6} className="mt-4 mt-md-0">
+          <Card className="mb-3">
+            <Card.Body className="d-flex align-items-start">
+              <Image src={iconoCasa} alt="Nuestra sede" width={40} className="me-3" />
+              <div>
+                <Card.Title>Nuestra sede</Card.Title>
+                <Card.Text>
+                  Av. Fitness 123
+                  <br />
+                  Yerba Buena, Tucumán
+                </Card.Text>
+              </div>
+            </Card.Body>
+          </Card>
 
-          <div className="info-bloque">
-            <img src={iconoComentario} alt="Teléfonos" />
-            <h3>Datos de contacto</h3>
-            <p>
-              Tel: (011) 1234 5678
-              <br />
-              WhatsApp: +54 9 11 1111 1111
-            </p>
-          </div>
+          <Card className="mb-3">
+            <Card.Body className="d-flex align-items-start">
+              <Image src={iconoComentario} alt="Contacto" width={40} className="me-3" />
+              <div>
+                <Card.Title>Datos de contacto</Card.Title>
+                <Card.Text>
+                  Tel: (011) 1234 5678
+                  <br />
+                  WhatsApp: +54 9 11 1111 1111
+                </Card.Text>
+              </div>
+            </Card.Body>
+          </Card>
 
-          <div className="info-bloque">
-            <img src={iconoGmail} alt="Correo electrónico" />
-            <h3>Email</h3>
-            <p>contacto@gimnasiorolling.com</p>
-          </div>
-        </div>
-      </div>
-    </div>
+          <Card>
+            <Card.Body className="d-flex align-items-start">
+              <Image src={iconoGmail} alt="Email" width={40} className="me-3" />
+              <div>
+                <Card.Title>Email</Card.Title>
+                <Card.Text>contacto@gimnasiorolling.com</Card.Text>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }
