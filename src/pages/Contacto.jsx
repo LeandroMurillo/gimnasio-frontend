@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button, Card, Image } from 'react-bootstrap'
 import iconoCasa from '../assets/img/icone-de-la-maison-orange.png';
 import iconoGmail from '../assets/img/icone-gmail-logo-png-orange.png';
 import iconoComentario from '../assets/img/icone-de-commentaire-et-de-retroaction-orange.png';
+import gimnasioInfo from '../gimnasioInfo.js';
 
 export default function Contacto() {
   const [formData, setFormData] = useState({
@@ -81,9 +82,9 @@ export default function Contacto() {
               <div>
                 <Card.Title>Nuestra sede</Card.Title>
                 <Card.Text>
-                  Av. Fitness 123
+                  {gimnasioInfo.direccion}
                   <br />
-                  Yerba Buena, Tucumán
+                  {gimnasioInfo.ciudad}
                 </Card.Text>
               </div>
             </Card.Body>
@@ -95,9 +96,9 @@ export default function Contacto() {
               <div>
                 <Card.Title>Datos de contacto</Card.Title>
                 <Card.Text>
-                  Tel: (011) 1234 5678
+                  Tel: {gimnasioInfo.telefono}
                   <br />
-                  WhatsApp: +54 9 11 1111 1111
+                  WhatsApp: {gimnasioInfo.whatsapp}
                 </Card.Text>
               </div>
             </Card.Body>
@@ -108,7 +109,7 @@ export default function Contacto() {
               <Image src={iconoGmail} alt="Email" width={40} className="me-3" />
               <div>
                 <Card.Title>Email</Card.Title>
-                <Card.Text>contacto@gimnasiorolling.com</Card.Text>
+                <Card.Text>{gimnasioInfo.email}</Card.Text>
               </div>
             </Card.Body>
           </Card>

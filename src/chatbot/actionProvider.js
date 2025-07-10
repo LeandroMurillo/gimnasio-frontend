@@ -1,3 +1,5 @@
+import gimnasioInfo from "../gimnasioInfo.js";
+
 export default class ActionProvider {
   constructor(crearMensajeBot, setStateFunc) {
     this.crearMensajeBot = crearMensajeBot;
@@ -20,13 +22,13 @@ export default class ActionProvider {
 
   handleContacto() {
     const mensaje = this.crearMensajeBot(
-      'Podés contactarnos al +123 456 789 o por Instagram: @gimnasio_rolling.'
+      `Podés contactarnos al ${gimnasioInfo.telefono} o por Instagram: ${gimnasioInfo.redes.instagram_cuenta}.`
     );
     this.agregarMensaje(mensaje);
   }
 
   handleUbicacion() {
-    const mensaje = this.crearMensajeBot('Estamos en Av. Principal 123, San Miguel de Tucumán.');
+    const mensaje = this.crearMensajeBot(`Estamos en ${gimnasioInfo.direccion}, ${gimnasioInfo.ciudad}.`);
     this.agregarMensaje(mensaje);
   }
 

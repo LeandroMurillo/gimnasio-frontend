@@ -42,7 +42,7 @@ export default function NavbarComponent() {
                 Sobre nosotros
               </Nav.Link>
 
-              <NavDropdown title="Planes y rutinas" id="nav-dropdown">
+              <NavDropdown title="Servicios" id="nav-dropdown">
                 <NavDropdown.Item as={Link} to="/recomposicion">
                   Recomposición
                 </NavDropdown.Item>
