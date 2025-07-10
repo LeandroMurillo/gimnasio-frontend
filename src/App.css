@@ -1,3 +1,7 @@
+* {
+  overflow-x: visible;
+}
+
 h1,
 h2,
 h3,
@@ -8,6 +12,5 @@ h6 {
   -webkit-appearance: none;
   -moz-appearance: none;
   list-style: none;
-  overflow: visible;
   display: block;
 }

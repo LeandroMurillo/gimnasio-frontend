@@ -18,9 +18,8 @@ export default function NavbarComponent() {
           <Navbar.Brand as={Link} to="/">
             <Image
               src="src/assets/img/logo.png"
-              rounded
               style={{
-                height: '80px',
+                height: '120px',
                 marginRight: '15px',
                 objectFit: 'cover'
               }}
@@ -29,7 +28,7 @@ export default function NavbarComponent() {
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="align-items-center me-auto">
+            <Nav className="align-items-center">
               <Nav.Link as={Link} to="/">
                 Inicio
               </Nav.Link>
@@ -43,7 +42,7 @@ export default function NavbarComponent() {
                 Sobre nosotros
               </Nav.Link>
 
-              <NavDropdown title="Planes y rutinas" id="nav-dropdown" popper={false}>
+              <NavDropdown title="Planes y rutinas" id="nav-dropdown">
                 <NavDropdown.Item as={Link} to="/recomposicion">
                   Recomposición
                 </NavDropdown.Item>
