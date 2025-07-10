@@ -17,7 +17,7 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="/nosotros" element={<SobreNosotros />} />
+        <Route path="/about" element={<SobreNosotros />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/recomposicion" element={<Recomposicion />} />
         <Route path="/musculacos" element={<Musculacos />} />

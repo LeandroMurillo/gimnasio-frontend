@@ -4,14 +4,13 @@ export default function RecomposicionCorporal() {
   return (
     <div className="bg-light">
       <Image
-        src="img/1140-exercise-class-esp.jpg"
+        src="src/assets/img/1140-exercise-class-esp.jpg"
         alt=""
-        fluid
-        className="w-100 mt-5"
+        className="w-100"
         style={{ objectFit: 'cover' }}
       />
 
-      <Container className="my-5">
+      <Container>
         <Row className="bg-light justify-content-center">
           <Col xs={12} md={10}>
             <div className="mt-4 px-3 px-md-5">

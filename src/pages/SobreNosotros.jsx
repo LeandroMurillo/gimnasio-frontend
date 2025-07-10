@@ -2,7 +2,7 @@ import { Container, Row, Col, Card, CardGroup, Image } from 'react-bootstrap';
 
 export default function SobreNosotros() {
   return (
-    <section className="py-5 text-center">
+    <section className="py-2 text-center">
       <Container>
         <h2 className="mb-4">¿Quiénes somos?</h2>
         <p className="fst-italic text-muted mx-auto mb-5" style={{ maxWidth: '800px' }}>

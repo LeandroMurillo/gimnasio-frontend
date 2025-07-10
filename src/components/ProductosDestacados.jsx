@@ -25,21 +25,6 @@ const productos = [
   }
 ];
 
-const comentarios = [
-  {
-    texto: '💬 “El gimnasio tiene todo lo que necesito. ¡Y la proteína es buenísima!”',
-    autor: 'Carla M.'
-  },
-  {
-    texto: '💬 “Compré los guantes y son muy cómodos. Buena calidad.”',
-    autor: 'Leo R.'
-  },
-  {
-    texto: '💬 “Las marcas con las que trabajan son top, se nota la diferencia.”',
-    autor: 'Sofía T.'
-  }
-];
-
 export default function ProductosDestacados() {
   return (
     <section>
@@ -56,16 +41,6 @@ export default function ProductosDestacados() {
           </Card>
         ))}
       </CardGroup>
-
-      <div>
-        <h2>Lo que dicen nuestros clientes:</h2>
-        {comentarios.map((c, i) => (
-          <div key={i}>
-            <p>{c.texto}</p>
-            <span>- {c.autor}</span>
-          </div>
-        ))}
-      </div>
     </section>
   );
 }
