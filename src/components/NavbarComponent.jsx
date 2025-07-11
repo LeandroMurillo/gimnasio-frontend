@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import { Container, Nav, Navbar, NavDropdown, Button, Image } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import LoginModal from './LoginModal';
+import { Link, useNavigate } from 'react-router-dom';
 import ClimaActual from './ClimaActual';
 
 export default function NavbarComponent() {
-  const [showLogin, setShowLogin] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -58,15 +56,13 @@ export default function NavbarComponent() {
 
             <Nav className="align-items-center">
               <ClimaActual />
-              <Button variant="warning" className="fw-bold ms-3" onClick={() => setShowLogin(true)}>
-                Acceder
+              <Button variant="warning" className="fw-bold ms-3" onClick={() => navigate('/login')}>
+                Login
               </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      <LoginModal show={showLogin} handleClose={() => setShowLogin(false)} />
     </>
   );
 }

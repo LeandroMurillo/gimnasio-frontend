@@ -35,11 +35,21 @@ export default function CalendarioClases() {
 
   return (
     <>
+      <style>
+        {`
+          /* Aumentar altura de filas horarias */
+          .fc-timegrid-slot {
+            height: 70px !important;
+          }
+        `}
+      </style>
+
       <FullCalendar
         plugins={[timeGridPlugin]}
         initialView="timeGridWeek"
         locale="es"
         height="auto"
+        expandRows={true}
         allDaySlot={false}
         slotMinTime="06:00:00"
         slotMaxTime="22:00:00"

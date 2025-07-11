@@ -3,6 +3,38 @@ import { Modal, Badge, Button } from 'react-bootstrap';
 export default function DetalleClaseModal({ evento, onHide }) {
   const { cupoMax, asistentes } = evento.extendedProps;
   const libres = cupoMax - asistentes;
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+  const handleInscribirse = () => {
+    if (!usuario) {
+      window.location.href = '/login';
+      return;
+    }
+
+    fetch(`${import.meta.env.VITE_API_URL}/asistencias`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${usuario.token}`
+      },
+      body: JSON.stringify({
+        clase: evento.id,
+        usuario: usuario._id
+      })
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Ya estás registrado o no se puede inscribir');
+        return res.json();
+      })
+      .then(() => {
+        alert('Inscripción exitosa');
+        onHide();
+      })
+      .catch((err) => {
+        console.error(err);
+        alert('No se pudo registrar la inscripción');
+      });
+  };
 
   return (
     <Modal show onHide={onHide} centered>
@@ -26,6 +58,9 @@ export default function DetalleClaseModal({ evento, onHide }) {
       <Modal.Footer>
         <Button variant="secondary" onClick={onHide}>
           Cerrar
+        </Button>
+        <Button variant="primary" onClick={handleInscribirse} disabled={libres <= 0}>
+          Inscribirse
         </Button>
       </Modal.Footer>
     </Modal>
