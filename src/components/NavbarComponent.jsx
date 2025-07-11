@@ -38,7 +38,7 @@ export default function NavbarComponent() {
               <Nav.Link as={Link} to="/horarios">
                 Horarios
               </Nav.Link>
-              <Nav.Link as={Link} to="/nosotros">
+              <Nav.Link as={Link} to="/about">
                 Sobre nosotros
               </Nav.Link>
 
