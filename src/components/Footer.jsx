@@ -5,9 +5,8 @@ import Image from 'react-bootstrap/Image';
 import logo from '../assets/img/logo.png';
 import fasebook from '../assets/img/facebook.png';
 import instagram from '../assets/img/instagram.png';
-import gimnasioInfo from '../gimnasioInfo.js';
 
-export default function Footer() {
+export default function Footer({ gimnasioInfo }) {
   return (
     <footer className="pt-3 pb-3" style={{ backgroundColor: '#ebe5d8' }}>
       <Container>
@@ -51,13 +50,15 @@ export default function Footer() {
             <ul className="list-unstyled">
               <li className="text-muted">Email: {gimnasioInfo.email}</li>
               <li className="text-muted">Teléfono: {gimnasioInfo.telefono}</li>
-              <li className="text-muted">Dirección: {gimnasioInfo.direccion}</li>
+              <li className="text-muted">
+                Dirección: {gimnasioInfo.direccion}, <br /> {gimnasioInfo.ciudad}
+              </li>
             </ul>
             <h5 className="mb-3">Síguenos</h5>
-            <a href={gimnasioInfo.redes.instagram_enlace} target="_blank" rel="noreferrer">
+            <a href={gimnasioInfo.redes.instagram} target="_blank" rel="noreferrer">
               <Image src={instagram} alt="Instagram" width={25} className="me-3" />
             </a>
-            <a href={gimnasioInfo.redes.facebook_enlace} target="_blank" rel="noreferrer">
+            <a href={gimnasioInfo.redes.facebook} target="_blank" rel="noreferrer">
               <Image src={fasebook} alt="Facebook" width={25} />
             </a>
           </Col>

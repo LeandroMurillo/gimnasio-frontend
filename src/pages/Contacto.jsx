@@ -3,9 +3,8 @@ import { Container, Row, Col, Form, Button, Card, Image } from 'react-bootstrap'
 import iconoCasa from '../assets/img/icone-de-la-maison-orange.png';
 import iconoGmail from '../assets/img/icone-gmail-logo-png-orange.png';
 import iconoComentario from '../assets/img/icone-de-commentaire-et-de-retroaction-orange.png';
-import gimnasioInfo from '../gimnasioInfo.js';
 
-export default function Contacto() {
+export default function Contacto({ gimnasioInfo }) {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -19,10 +18,26 @@ export default function Contacto() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Su mensaje ha sido enviado ✅');
-    setFormData({ nombre: '', email: '', mensaje: '' });
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/mensajes`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) throw new Error('Error al enviar el mensaje');
+
+      alert('✅ Su mensaje ha sido enviado correctamente');
+      setFormData({ nombre: '', email: '', mensaje: '' });
+    } catch (err) {
+      console.error(err);
+      alert('❌ Hubo un error al enviar el mensaje. Intente nuevamente.');
+    }
   };
 
   return (
