@@ -84,7 +84,7 @@ export default function Contacto({ gimnasioInfo }) {
               />
             </Form.Group>
 
-            <Button type="submit" variant="primary">
+            <Button type="submit" variant="primary" className="bg-warning text-dark">
               Enviar
             </Button>
           </Form>

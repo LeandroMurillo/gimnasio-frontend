@@ -1,48 +1,48 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
-export default function Tarjeta({ titulo, descripcion, precio }) {
-  const mpRef = useRef(null);
-
-  // Formatea el precio como moneda ARS
+export default function Tarjeta({ titulo, descripcion, precio, planId }) {
   const precioFormateado = new Intl.NumberFormat('es-AR', {
     style: 'currency',
     currency: 'ARS'
   }).format(precio);
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://sdk.mercadopago.com/js/v2';
-    script.onload = () => {
-      mpRef.current = new window.MercadoPago(import.meta.env.VITE_MP_PUBLIC_KEY, {
-        locale: 'es-AR'
-      });
-    };
-    document.body.appendChild(script);
-    return () => document.body.removeChild(script);
-  }, []);
-
   const handlePagar = async () => {
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+    const token = usuario.token;
+
+    if (!token) {
+      alert('Debes iniciar sesión para suscribirte');
+      return;
+    }
+
     try {
+      console.log('🚀 Enviando preferencia:', { titulo, precio, planId });
+
       const res = await fetch(`${import.meta.env.VITE_API_URL}/pagos/crear-preferencia`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-token': token
+        },
         body: JSON.stringify({
           titulo,
-          precio: Math.round(precio)
+          precio: Math.round(precio),
+          planId
         })
       });
+
       const data = await res.json();
-      if (data.id && mpRef.current) {
-        mpRef.current.checkout({
-          preference: { id: data.id },
-          autoOpen: true
-        });
+
+      if (data.id) {
+        // ✅ Redirección directa al checkout con back_urls activados
+        window.location.href = `https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=${data.id}`;
       } else {
-        console.warn('MercadoPago no inicializado o preferencia inválida');
+        console.warn('No se recibió un ID de preferencia válido');
       }
     } catch (error) {
-      console.error('Error al iniciar pago:', error);
+      console.error('Error al iniciar el pago:', error);
+      alert('Ocurrió un error al generar el enlace de pago');
     }
   };
 
@@ -58,7 +58,7 @@ export default function Tarjeta({ titulo, descripcion, precio }) {
 
         <Card.Text className="flex-grow-1 mb-3">{descripcion}</Card.Text>
 
-        <Button variant="primary" className="mt-auto w-100 py-2" onClick={handlePagar}>
+        <Button variant="warning" className="mt-auto w-100 py-2" onClick={handlePagar}>
           Suscribirme
         </Button>
       </Card.Body>

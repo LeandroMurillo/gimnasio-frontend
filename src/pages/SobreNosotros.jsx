@@ -55,9 +55,7 @@ export default function SobreNosotros() {
                 />
                 <Card.Body>
                   <Card.Title className="mb-2">{miembro.nombre}</Card.Title>
-                  <Card.Text className="bg-warning text-white rounded px-2 py-1">
-                    {miembro.rol}
-                  </Card.Text>
+                  <Card.Text className="bg-warning rounded px-2 py-1">{miembro.rol}</Card.Text>
                 </Card.Body>
               </Card>
             </Col>
@@ -91,7 +89,7 @@ export default function SobreNosotros() {
                 style={{ height: '250px', objectFit: 'cover' }}
               />
               <Card.Body>
-                <Card.Title className="bg-warning text-white rounded p-2 text-center text-uppercase">
+                <Card.Title className="bg-warning rounded p-2 text-center text-uppercase">
                   {profe.nombre}
                 </Card.Title>
                 <Card.Text>{profe.descripcion}</Card.Text>

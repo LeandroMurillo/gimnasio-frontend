@@ -11,7 +11,9 @@ import Horarios from './pages/Horarios';
 import NotFound from './pages/Error404';
 import AdminApp from './admin/AdminApp';
 import Login from './pages/Login';
-import AdminRoute from './ProtectedRoute';
+import ProtectedRoute from './ProtectedRoute';
+import Registro from './pages/Registro';
+import PagoExitoso from './pages/PagoExitoso';
 
 export default function App() {
   const [gimnasioInfo, setGimnasioInfo] = useState(null);
@@ -38,10 +40,12 @@ export default function App() {
         <Route path="/horarios" element={<Horarios />} />
         <Route path="/contacto" element={<Contacto gimnasioInfo={gimnasioInfo} />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="/success" element={<PagoExitoso />} />
         <Route path="*" element={<NotFound />} />
       </Route>
 
-      <Route element={<AdminRoute gimnasioInfo={gimnasioInfo} />}>
+      <Route element={<ProtectedRoute gimnasioInfo={gimnasioInfo} />}>
         <Route path="/admin/*" element={<AdminApp />} />
       </Route>
     </Routes>

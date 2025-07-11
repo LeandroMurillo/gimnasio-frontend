@@ -44,6 +44,7 @@ export default function Planes() {
               titulo={plan.nombre}
               descripcion={plan.descripcion}
               precio={plan.precio}
+              planId={plan._id}
             />
           </Col>
         ))}
