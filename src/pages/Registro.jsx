@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Form, Button, Container, Card, Alert, Row, Col } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Form, Button, Card, Alert, Row, Col } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Registro() {
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ export default function Registro() {
   };
 
   return (
-    <Container className="mt-5">
+    <div>
       <Row className="justify-content-center">
         <Col md={6}>
           <Card className="p-4 shadow">
@@ -109,13 +109,17 @@ export default function Registro() {
                 />
               </Form.Group>
 
-              <Button variant="primary" type="submit" className="w-100">
+              <div className="text-center mt-3 mb-3">
+                ¿Ya tienes una cuenta? <Link to="/login">Iniciar Sesión</Link>
+              </div>
+
+              <Button variant="warning" type="submit" className="w-100">
                 Registrarse
               </Button>
             </Form>
           </Card>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 }

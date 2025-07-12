@@ -1,8 +1,6 @@
-console.log('✅ Componente PagoExitoso cargado');
-
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Spinner, Alert, Container } from 'react-bootstrap';
+import { Spinner, Alert } from 'react-bootstrap';
 
 export default function PagoExitoso() {
   const location = useLocation();
@@ -32,7 +30,7 @@ export default function PagoExitoso() {
           body: JSON.stringify({
             mercadoPagoId: paymentId,
             planId,
-            monto: 0, // podés enviar 0 si lo resolvés en backend
+            monto: 0,
             status: 'approved',
             captured_at: new Date().toISOString()
           })
@@ -57,10 +55,10 @@ export default function PagoExitoso() {
   }, [location, navigate]);
 
   return (
-    <Container className="py-5 text-center">
+    <div className="text-center">
       <h3 className="mb-3">Confirmación de Pago</h3>
       <p>{estado}</p>
       {estado === 'Procesando pago...' && <Spinner animation="border" />}
-    </Container>
+    </div>
   );
 }

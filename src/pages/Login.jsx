@@ -1,12 +1,11 @@
-// src/pages/Login.jsx
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Form, Button, Alert, Card, Row, Col } from 'react-bootstrap';
 
 export default function Login() {
   const [correo, setCorreo] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -25,9 +24,9 @@ export default function Login() {
       localStorage.setItem('usuario', JSON.stringify(user));
 
       if (user.rol === 'admin') {
-        navigate('/admin');
+        window.location.href = '/admin';
       } else {
-        navigate('/');
+        window.location.href = '/';
       }
     } catch (err) {
       setError(err.message);
@@ -35,37 +34,50 @@ export default function Login() {
   };
 
   return (
-    <div className="container mt-5" style={{ maxWidth: '400px' }}>
-      <h2 className="mb-4">Iniciar Sesión</h2>
-      <form onSubmit={handleLogin}>
-        <div className="mb-3">
-          <label className="form-label">Correo electrónico</label>
-          <input
-            type="email"
-            className="form-control"
-            value={correo}
-            onChange={(e) => setCorreo(e.target.value)}
-            required
-          />
-        </div>
+    <div>
+      <Row className="justify-content-center">
+        <Col md={6}>
+          <Card className="p-4 shadow">
+            <h3 className="mb-4 text-center">Iniciar Sesión</h3>
 
-        <div className="mb-3">
-          <label className="form-label">Contraseña</label>
-          <input
-            type="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+            <Form onSubmit={handleLogin}>
+              <Form.Group className="mb-3">
+                <Form.Label>Correo electrónico</Form.Label>
+                <Form.Control
+                  type="email"
+                  value={correo}
+                  onChange={(e) => setCorreo(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-        {error && <div className="alert alert-danger">{error}</div>}
+              <Form.Group className="mb-3">
+                <Form.Label>Contraseña</Form.Label>
+                <Form.Control
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-        <button type="submit" className="btn btn-primary w-100">
-          Ingresar
-        </button>
-      </form>
+              {error && (
+                <Alert variant="danger" className="text-center">
+                  {error}
+                </Alert>
+              )}
+
+              <div className="text-center mt-3 mb-3">
+                ¿Todavía no tienes una cuenta? <Link to="/registro">Regístrate</Link>
+              </div>
+
+              <Button variant="warning" type="submit" className="w-100">
+                Ingresar
+              </Button>
+            </Form>
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 }

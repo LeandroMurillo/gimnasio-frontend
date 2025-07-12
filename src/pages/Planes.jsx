@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container, Row, Col, Spinner, Alert } from 'react-bootstrap';
+import { Row, Col, Spinner, Alert } from 'react-bootstrap';
 import TarjetaPlanes from '../components/TarjetaPlanes';
 
 export default function Planes() {
@@ -20,23 +20,23 @@ export default function Planes() {
 
   if (cargando) {
     return (
-      <Container className="my-5 text-center py-5">
+      <div className="text-center py-5">
         <Spinner animation="border" role="status" />
         <p className="mt-3">Cargando planes...</p>
-      </Container>
+      </div>
     );
   }
 
   if (error) {
     return (
-      <Container className="my-5 py-5">
+      <div className="py-5">
         <Alert variant="danger">No se pudieron cargar los planes: {error}</Alert>
-      </Container>
+      </div>
     );
   }
 
   return (
-    <Container className="my-5 py-5">
+    <div>
       <Row className="g-5">
         {planes.map((plan) => (
           <Col md={4} key={plan._id || plan.id || plan.nombre}>
@@ -49,6 +49,6 @@ export default function Planes() {
           </Col>
         ))}
       </Row>
-    </Container>
+    </div>
   );
 }

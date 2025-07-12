@@ -1,58 +1,66 @@
 import { useEffect, useState } from 'react';
-import { Spinner, Alert, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import traduccionesClima from './traduccionesClima.json';
 
 const API_KEY = import.meta.env.VITE_METEOSOURCE_KEY;
 const LANG = 'en';
 const UNITS = 'metric';
 
+const DEFAULT_COORDS = {
+  latitude: -26.8083,
+  longitude: -65.2176
+};
+
 export default function ClimaActual() {
   const [clima, setClima] = useState(null);
-  const [ciudad, setCiudad] = useState(null);
+  const [ciudad, setCiudad] = useState('San Miguel de Tucumán');
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
+  const fetchClimaYUbicacion = (latitude, longitude) => {
+    fetch(
+      `https://www.meteosource.com/api/v1/free/point?lat=${latitude}&lon=${longitude}&sections=current&language=${LANG}&units=${UNITS}&key=${API_KEY}`
+    )
+      .then((res) => {
+        if (!res.ok) throw new Error('Error al obtener el clima');
+        return res.json();
+      })
+      .then((data) => setClima(data.current))
+      .catch((err) => setError(err.message));
+
+    fetch(
+      `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const { city, town, village, state } = data.address;
+        setCiudad(city || town || village || state || 'San Miguel de Tucumán');
+      })
+      .catch(() => setCiudad('San Miguel de Tucumán'))
+      .finally(() => setCargando(false));
+  };
+
   useEffect(() => {
     if (!navigator.geolocation) {
-      setError('Geolocalización no soportada');
-      setCargando(false);
+      fetchClimaYUbicacion(DEFAULT_COORDS.latitude, DEFAULT_COORDS.longitude);
       return;
     }
 
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
-        const { latitude, longitude } = coords;
-
-        fetch(
-          `https://www.meteosource.com/api/v1/free/point?lat=${latitude}&lon=${longitude}&sections=current&language=${LANG}&units=${UNITS}&key=${API_KEY}`
-        )
-          .then((res) => {
-            if (!res.ok) throw new Error('Error al obtener el clima');
-            return res.json();
-          })
-          .then((data) => setClima(data.current))
-          .catch((err) => setError(err.message));
-
-        // Fetch ubicación
-        fetch(
-          `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            const { city, town, village, state } = data.address;
-            setCiudad(city || town || village || state || 'Ubicación desconocida');
-          })
-          .catch(() => setCiudad('Ubicación desconocida'))
-          .finally(() => setCargando(false));
+        fetchClimaYUbicacion(coords.latitude, coords.longitude);
       },
       () => {
-        setError('No se pudo obtener la ubicación');
-        setCargando(false);
+        fetchClimaYUbicacion(DEFAULT_COORDS.latitude, DEFAULT_COORDS.longitude);
       }
     );
   }, []);
 
-  if (cargando || error || !clima || !ciudad) return null;
+  if (cargando) {
+    return <div className="d-none d-lg-block ms-3 p-2 text-muted">Cargando datos del clima...</div>;
+  }
+
+  if (error || !clima || !ciudad) return null;
 
   const resumenTraducido = traduccionesClima[clima.summary] || clima.summary;
   const iconUrl = `/iconos-clima/medium/${clima.icon_num}.png`;

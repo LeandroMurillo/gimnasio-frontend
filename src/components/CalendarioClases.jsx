@@ -54,7 +54,10 @@ export default function CalendarioClases() {
         slotMinTime="06:00:00"
         slotMaxTime="22:00:00"
         slotDuration="02:00:00"
+        slotLabelInterval="01:00:00"
+        slotLabelFormat={{ hour: '2-digit', minute: '2-digit', hour12: false }}
         events={events}
+        dayHeaderFormat={{ weekday: 'long' }}
         headerToolbar={{ left: '', center: 'title', right: '' }}
         eventClick={({ event }) => setModal(event)}
       />

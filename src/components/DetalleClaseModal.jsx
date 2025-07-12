@@ -1,7 +1,7 @@
 import { Modal, Badge, Button } from 'react-bootstrap';
 
 export default function DetalleClaseModal({ evento, onHide }) {
-  const { cupoMax, asistentes, planesPermitidos = [] } = evento.extendedProps;
+  const { cupoMax, asistentes } = evento.extendedProps;
   const libres = cupoMax - asistentes;
   const usuario = JSON.parse(localStorage.getItem('usuario'));
 
@@ -36,6 +36,13 @@ export default function DetalleClaseModal({ evento, onHide }) {
       });
   };
 
+  const formatHora = (fecha) =>
+    new Date(fecha).toLocaleTimeString([], {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+
   return (
     <Modal show onHide={onHide} centered>
       <Modal.Header closeButton>
@@ -44,8 +51,7 @@ export default function DetalleClaseModal({ evento, onHide }) {
 
       <Modal.Body>
         <p>
-          Horario: {new Date(evento.start).toLocaleTimeString()} –{' '}
-          {new Date(evento.end).toLocaleTimeString()}
+          Horario: {formatHora(evento.start)} – {formatHora(evento.end)}
         </p>
 
         <p>
@@ -54,15 +60,6 @@ export default function DetalleClaseModal({ evento, onHide }) {
             {libres}/{cupoMax}
           </Badge>
         </p>
-
-        <p>Planes habilitados para esta clase:</p>
-        <ul className="mb-0">
-          {planesPermitidos.length > 0 ? (
-            planesPermitidos.map((plan) => <li key={plan._id}>{plan.nombre}</li>)
-          ) : (
-            <li>No hay planes asociados</li>
-          )}
-        </ul>
       </Modal.Body>
 
       <Modal.Footer>

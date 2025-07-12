@@ -7,6 +7,8 @@ import fasebook from '../assets/img/facebook.png';
 import instagram from '../assets/img/instagram.png';
 
 export default function Footer({ gimnasioInfo }) {
+  if (!gimnasioInfo) return null; // Opcional: evita renderizar si no hay datos
+
   return (
     <footer className="pt-3 pb-3" style={{ backgroundColor: '#ebe5d8' }}>
       <Container>
@@ -48,39 +50,50 @@ export default function Footer({ gimnasioInfo }) {
           <Col md={3} className="mb-3">
             <h5>Contacto</h5>
             <ul className="list-unstyled">
-              <li className="text-muted">Email: {gimnasioInfo.email}</li>
-              <li className="text-muted">Teléfono: {gimnasioInfo.telefono}</li>
+              <li className="text-muted">Email: {gimnasioInfo?.email ?? 'No disponible'}</li>
+              <li className="text-muted">Teléfono: {gimnasioInfo?.telefono ?? 'No disponible'}</li>
               <li className="text-muted">
-                Dirección: {gimnasioInfo.direccion}, <br /> {gimnasioInfo.ciudad}
+                Dirección: {gimnasioInfo?.direccion ?? 'No disponible'},
+                <br />
+                {gimnasioInfo?.ciudad ?? ''}
               </li>
             </ul>
             <h5 className="mb-3">Síguenos</h5>
-            <a href={gimnasioInfo.redes.instagram} target="_blank" rel="noreferrer">
-              <Image src={instagram} alt="Instagram" width={25} className="me-3" />
-            </a>
-            <a href={gimnasioInfo.redes.facebook} target="_blank" rel="noreferrer">
-              <Image src={fasebook} alt="Facebook" width={25} />
-            </a>
+            {gimnasioInfo?.redes?.instagram && (
+              <a href={gimnasioInfo.redes.instagram} target="_blank" rel="noreferrer">
+                <Image src={instagram} alt="Instagram" width={25} className="me-3" />
+              </a>
+            )}
+            {gimnasioInfo?.redes?.facebook && (
+              <a href={gimnasioInfo.redes.facebook} target="_blank" rel="noreferrer">
+                <Image src={fasebook} alt="Facebook" width={25} />
+              </a>
+            )}
           </Col>
 
           <Col md={3} className="mb-3">
             <h5>Ubicación</h5>
             <div className="ratio ratio-4x3">
-              <iframe
-                src={gimnasioInfo.ubicacion.iframeSrc}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                title="Ubicación del gimnasio"></iframe>
+              {gimnasioInfo?.ubicacion?.iframeSrc ? (
+                <iframe
+                  src={gimnasioInfo.ubicacion.iframeSrc}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  title="Ubicación del gimnasio"></iframe>
+              ) : (
+                <div className="text-muted">Ubicación no disponible</div>
+              )}
             </div>
           </Col>
         </Row>
 
         <Row>
           <Col className="text-center text-muted mt-3">
-            © {new Date().getFullYear()} {gimnasioInfo.nombre}. Todos los derechos reservados.
+            © {new Date().getFullYear()} {gimnasioInfo?.nombre ?? 'Gimnasio'}. Todos los derechos
+            reservados.
           </Col>
         </Row>
       </Container>

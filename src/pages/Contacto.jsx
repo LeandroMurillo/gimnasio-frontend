@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Row, Col, Form, Button, Card, Image } from 'react-bootstrap';
+import { Row, Col, Form, Button, Card, Image } from 'react-bootstrap';
 import iconoCasa from '../assets/img/icone-de-la-maison-orange.png';
 import iconoGmail from '../assets/img/icone-gmail-logo-png-orange.png';
 import iconoComentario from '../assets/img/icone-de-commentaire-et-de-retroaction-orange.png';
@@ -41,7 +41,7 @@ export default function Contacto({ gimnasioInfo }) {
   };
 
   return (
-    <Container className="py-3">
+    <>
       <h2 className="text-center mb-3">Contacta con nosotros</h2>
       <p className="text-center text-muted">Rellená nuestro formulario o llamanos por teléfono</p>
       <hr />
@@ -84,7 +84,7 @@ export default function Contacto({ gimnasioInfo }) {
               />
             </Form.Group>
 
-            <Button type="submit" variant="primary" className="bg-warning text-dark">
+            <Button type="submit" variant="warning" className="bg-warning text-dark">
               Enviar
             </Button>
           </Form>
@@ -130,6 +130,6 @@ export default function Contacto({ gimnasioInfo }) {
           </Card>
         </Col>
       </Row>
-    </Container>
+    </>
   );
 }
