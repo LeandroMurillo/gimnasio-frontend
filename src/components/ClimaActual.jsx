@@ -76,7 +76,7 @@ export default function ClimaActual() {
           />
         </Col>
         <Col className="ps-0">
-          clima {resumenTraducido} en {ciudad}
+          {resumenTraducido} en {ciudad}
           <div className="small text-muted">
             Temperatura: {clima.temperature} °C <br />
             Humedad: {clima.humidity} % <br />

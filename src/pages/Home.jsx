@@ -37,8 +37,8 @@ const clasesPopulares = [
 export default function Home() {
   return (
     <>
-      <Image src={banner} alt="Banner del gimnasio Rolling" fluid />
       <Container>
+        <Image src={banner} alt="Banner del gimnasio Rolling" fluid />
         <Row className="my-4">
           <Col>
             <p>¡Transforma tu cuerpo en Rolling!</p>
