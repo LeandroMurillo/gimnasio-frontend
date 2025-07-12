@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
-export default function Tarjeta({ titulo, descripcion, precio, planId }) {
+export default function TarjetaPlanes({ titulo, descripcion, precio, planId, setErrorMsg }) {
   const precioFormateado = new Intl.NumberFormat('es-AR', {
     style: 'currency',
     currency: 'ARS'
@@ -12,7 +12,7 @@ export default function Tarjeta({ titulo, descripcion, precio, planId }) {
     const token = usuario.token;
 
     if (!token) {
-      alert('Debes iniciar sesión para suscribirte');
+      setErrorMsg(`Debes iniciar sesión para suscribirte al ${titulo}`);
       return;
     }
 
@@ -23,7 +23,7 @@ export default function Tarjeta({ titulo, descripcion, precio, planId }) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-token': token
+          Authorization: `Bearer ${token}` // ✅ Lo que espera tu backend
         },
         body: JSON.stringify({
           titulo,
@@ -35,14 +35,13 @@ export default function Tarjeta({ titulo, descripcion, precio, planId }) {
       const data = await res.json();
 
       if (data.id) {
-        // ✅ Redirección directa al checkout con back_urls activados
         window.location.href = `https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=${data.id}`;
       } else {
-        console.warn('No se recibió un ID de preferencia válido');
+        setErrorMsg('No se recibió una preferencia de pago válida');
       }
     } catch (error) {
       console.error('Error al iniciar el pago:', error);
-      alert('Ocurrió un error al generar el enlace de pago');
+      setErrorMsg('Ocurrió un error al generar el enlace de pago');
     }
   };
 

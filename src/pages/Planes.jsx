@@ -6,6 +6,7 @@ export default function Planes() {
   const [planes, setPlanes] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
+  const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/planes`)
@@ -37,6 +38,7 @@ export default function Planes() {
 
   return (
     <div>
+      {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
       <Row className="g-5">
         {planes.map((plan) => (
           <Col md={4} key={plan._id || plan.id || plan.nombre}>
@@ -45,6 +47,7 @@ export default function Planes() {
               descripcion={plan.descripcion}
               precio={plan.precio}
               planId={plan._id}
+              setErrorMsg={setErrorMsg}
             />
           </Col>
         ))}

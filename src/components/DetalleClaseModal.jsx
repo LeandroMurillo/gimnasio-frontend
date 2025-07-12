@@ -5,9 +5,18 @@ export default function DetalleClaseModal({ evento, onHide }) {
   const libres = cupoMax - asistentes;
   const usuario = JSON.parse(localStorage.getItem('usuario'));
 
+  const ahora = new Date();
+  const fechaFin = new Date(evento.end);
+  const clasePasada = fechaFin < ahora;
+
   const handleInscribirse = () => {
     if (!usuario) {
       window.location.href = '/login';
+      return;
+    }
+
+    if (clasePasada) {
+      alert('No se puede inscribir a una clase ya finalizada');
       return;
     }
 
@@ -60,13 +69,19 @@ export default function DetalleClaseModal({ evento, onHide }) {
             {libres}/{cupoMax}
           </Badge>
         </p>
+
+        {clasePasada && (
+          <p className="text-danger fw-semibold mt-2">
+            Esta clase ya ha cerrado sus inscripciones.
+          </p>
+        )}
       </Modal.Body>
 
       <Modal.Footer>
         <Button variant="secondary" onClick={onHide}>
           Cerrar
         </Button>
-        <Button variant="primary" onClick={handleInscribirse} disabled={libres <= 0}>
+        <Button variant="primary" onClick={handleInscribirse} disabled={libres <= 0 || clasePasada}>
           Inscribirse
         </Button>
       </Modal.Footer>
