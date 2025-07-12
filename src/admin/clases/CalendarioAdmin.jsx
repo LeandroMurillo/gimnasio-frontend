@@ -7,8 +7,22 @@ import ClaseAdminModal from './ClaseAdminModal';
 export default function CalendarioAdmin() {
   const [events, setEvents] = useState([]);
   const [eventoSeleccionado, setEventoSeleccionado] = useState(null);
+  const [esMovil, setEsMovil] = useState(null); // Para detectar si es móvil
 
+  // Detectar si es móvil
   useEffect(() => {
+    const actualizarVista = () => {
+      setEsMovil(window.innerWidth < 768);
+    };
+    actualizarVista();
+    window.addEventListener('resize', actualizarVista);
+    return () => window.removeEventListener('resize', actualizarVista);
+  }, []);
+
+  // Cargar eventos una vez que se detecta si es móvil o no
+  useEffect(() => {
+    if (esMovil === null) return;
+
     const cargarEventos = async () => {
       try {
         const hoy = new Date();
@@ -31,7 +45,7 @@ export default function CalendarioAdmin() {
     };
 
     cargarEventos();
-  }, []);
+  }, [esMovil]);
 
   const handleSelect = async (info) => {
     const nombre = prompt('Ingrese el nombre de la clase:');
@@ -41,8 +55,8 @@ export default function CalendarioAdmin() {
       nombre,
       fechaInicio: info.startStr,
       fechaFin: info.endStr,
-      categoria: '64f123abc123...', // <- reemplazar con una ID válida real
-      instructor: '64f456def456...', // <- reemplazar con una ID válida real
+      categoria: '64f123abc123...', // <- Reemplazar con ID real
+      instructor: '64f456def456...', // <- Reemplazar con ID real
       cupoMax: 20,
       planesPermitidos: []
     };
@@ -81,28 +95,43 @@ export default function CalendarioAdmin() {
     setEventoSeleccionado(null);
   };
 
+  if (esMovil === null) return null; // Esperar a saber si es móvil
+
   return (
-    <div className="container mt-4">
-      <h2 className="mb-3">Gestión de clases</h2>
-      <FullCalendar
-        plugins={[timeGridPlugin, interactionPlugin]}
-        initialView="timeGridWeek"
-        locale="es"
-        height="auto"
-        selectable={true}
-        select={handleSelect}
-        events={events}
-        eventClick={handleEventClick}
-        allDaySlot={false}
-        slotMinTime="06:00:00"
-        slotMaxTime="22:00:00"
-        slotDuration="01:00:00"
-        headerToolbar={{
-          left: 'prev,next today',
-          center: 'title',
-          right: 'timeGridWeek,timeGridDay'
-        }}
-      />
+    <>
+      <style>
+        {`
+          .fc-timegrid-slot {
+            height: 40px !important;
+          }
+        `}
+      </style>
+
+      <div className="container mt-4">
+        <h2 className="mb-3">Gestión de clases</h2>
+        <FullCalendar
+          key={esMovil ? 'movil' : 'desktop'} // Forzar re-render al cambiar vista
+          plugins={[timeGridPlugin, interactionPlugin]}
+          initialView={esMovil ? 'timeGridDay' : 'timeGridWeek'}
+          locale="es"
+          height="auto"
+          selectable
+          select={handleSelect}
+          events={events}
+          eventClick={handleEventClick}
+          allDaySlot={false}
+          slotMinTime="06:00:00"
+          slotMaxTime="22:00:00"
+          slotDuration="01:00:00"
+          dayHeaderFormat={{ weekday: 'long' }}
+          slotLabelFormat={{ hour: '2-digit', minute: '2-digit', hour12: false }}
+          headerToolbar={{
+            left: esMovil ? '' : 'prev,next today',
+            center: 'title',
+            right: esMovil ? '' : 'timeGridWeek,timeGridDay'
+          }}
+        />
+      </div>
 
       {eventoSeleccionado && (
         <ClaseAdminModal
@@ -111,6 +140,6 @@ export default function CalendarioAdmin() {
           onEliminar={() => handleEliminarClase(eventoSeleccionado.id)}
         />
       )}
-    </div>
+    </>
   );
 }
