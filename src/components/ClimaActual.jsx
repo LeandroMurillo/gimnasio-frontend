@@ -23,7 +23,6 @@ export default function ClimaActual() {
       ({ coords }) => {
         const { latitude, longitude } = coords;
 
-        // Fetch clima
         fetch(
           `https://www.meteosource.com/api/v1/free/point?lat=${latitude}&lon=${longitude}&sections=current&language=${LANG}&units=${UNITS}&key=${API_KEY}`
         )

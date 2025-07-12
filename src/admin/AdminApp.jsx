@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import simpleRestProvider from 'ra-data-simple-rest';
 import spanishMessages from 'ra-language-spanish';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
+import CustomLayout from './CustomLayout';
 
 import UsuariosList from './usuarios/UsuariosList';
 import UsuariosEdit from './usuarios/UsuariosEdit';
@@ -27,7 +28,8 @@ export default function AdminApp() {
       basename="/admin"
       loginPage={false}
       dataProvider={dataProvider}
-      i18nProvider={i18nProvider}>
+      i18nProvider={i18nProvider}
+      layout={CustomLayout}>
       <Resource name="usuarios" list={UsuariosList} edit={UsuariosEdit} create={UsuariosCreate} />
       <Resource name="clases" list={ClasesList} edit={ClasesEdit} create={ClasesCreate} />
       <Resource name="mensajes" list={MensajesList} />
