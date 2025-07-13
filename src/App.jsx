@@ -20,7 +20,7 @@ export default function App() {
   const [gimnasioInfo, setGimnasioInfo] = useState(null);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/configuracion`)
+    fetch(`${import.meta.env.VITE_API_URL}/configuracion/default`)
       .then((res) => res.json())
       .then((data) => setGimnasioInfo(data))
       .catch((err) => {

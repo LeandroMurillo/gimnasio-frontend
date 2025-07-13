@@ -40,6 +40,10 @@ export default function Contacto({ gimnasioInfo }) {
     }
   };
 
+  if (!gimnasioInfo) {
+    return <p className="text-center mt-5">Cargando información del gimnasio...</p>;
+  }
+
   return (
     <>
       <h2 className="text-center mb-3">Contacta con nosotros</h2>

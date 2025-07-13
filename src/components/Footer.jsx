@@ -7,7 +7,7 @@ import fasebook from '../assets/img/facebook.png';
 import instagram from '../assets/img/instagram.png';
 
 export default function Footer({ gimnasioInfo }) {
-  if (!gimnasioInfo) return null; // Opcional: evita renderizar si no hay datos
+  if (!gimnasioInfo) return null;
 
   return (
     <footer className="pt-3 pb-3" style={{ backgroundColor: '#ebe5d8' }}>
