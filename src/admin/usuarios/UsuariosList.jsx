@@ -46,13 +46,12 @@ export default function UsuariosList(props) {
       {...props}
       title="Panel de Administración de Usuarios"
       perPage={10}
-      sx={{ '& .RaList-actions': { mt: 2 } }} // Espacio arriba de los botones
-    >
+      sx={{ '& .RaList-actions': { mt: 2 } }}>
       {isSmall ? (
         <SimpleList
           primaryText={(record) => `${record.nombre} ${record.apellido}`}
           secondaryText={(record) => record.correo}
-          tertiaryText={(record) => `Rol: ${record.rol}`}
+          tertiaryText={(record) => `Teléfono: ${record.telefono} | Rol: ${record.rol}`}
           linkType={(record) => (record.id === ADMIN_ROOT_ID ? false : 'edit')}
         />
       ) : (
@@ -61,6 +60,7 @@ export default function UsuariosList(props) {
           <TextField source="nombre" label="Nombre" />
           <TextField source="apellido" label="Apellido" />
           <EmailField source="correo" label="Correo" />
+          <TextField source="telefono" label="Teléfono" />
           <TextField source="rol" label="Rol" />
           <BooleanField source="estado" label="Estado" />
           <CustomActions />

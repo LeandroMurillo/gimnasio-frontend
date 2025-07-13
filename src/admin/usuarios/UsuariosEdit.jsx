@@ -30,6 +30,7 @@ function UsuarioCamposForm() {
       <TextInput source="nombre" label="Nombre" disabled={soloLectura} fullWidth />
       <TextInput source="apellido" label="Apellido" disabled={soloLectura} fullWidth />
       <TextInput source="correo" label="Correo" disabled={soloLectura} fullWidth />
+      <TextInput source="telefono" label="Teléfono" disabled={soloLectura} fullWidth />
       <TextInput source="rol" label="Rol" disabled={soloLectura} fullWidth />
       <BooleanInput source="estado" label="Estado" disabled={soloLectura} />
     </>

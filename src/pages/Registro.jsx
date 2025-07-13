@@ -8,6 +8,7 @@ export default function Registro() {
     nombre: '',
     apellido: '',
     correo: '',
+    telefono: '',
     password: ''
   });
   const [error, setError] = useState('');
@@ -24,6 +25,13 @@ export default function Registro() {
     e.preventDefault();
     setError('');
     setSuccess('');
+
+    // Validación simple del teléfono
+    const telefonoRegex = /^[0-9]{7,15}$/;
+    if (!telefonoRegex.test(formData.telefono)) {
+      setError('El teléfono debe contener solo números y tener entre 7 y 15 dígitos');
+      return;
+    }
 
     try {
       const body = { ...formData, rol: 'usuario' };
@@ -95,6 +103,18 @@ export default function Registro() {
                   value={formData.correo}
                   onChange={handleChange}
                   required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Teléfono</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="telefono"
+                  value={formData.telefono}
+                  onChange={handleChange}
+                  required
+                  placeholder="Ej: 3815551234"
                 />
               </Form.Group>
 
