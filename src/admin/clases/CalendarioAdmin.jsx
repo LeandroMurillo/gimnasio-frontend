@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import ClaseAdminModal from './ClaseAdminModal';
 
 export default function CalendarioAdmin() {
   const [events, setEvents] = useState([]);
-  const [eventoSeleccionado, setEventoSeleccionado] = useState(null);
   const [esMovil, setEsMovil] = useState(null); // Para detectar si es móvil
+  const navigate = useNavigate();
 
   // Detectar si es móvil
   useEffect(() => {
@@ -55,8 +55,8 @@ export default function CalendarioAdmin() {
       nombre,
       fechaInicio: info.startStr,
       fechaFin: info.endStr,
-      categoria: '64f123abc123...', // <- Reemplazar con ID real
-      instructor: '64f456def456...', // <- Reemplazar con ID real
+      categoria: '64f123abc123...', // <- Reemplazar con ID real si se usa
+      instructor: '64f456def456...', // <- Reemplazar con ID real si se usa
       cupoMax: 20,
       planesPermitidos: []
     };
@@ -71,15 +71,8 @@ export default function CalendarioAdmin() {
       if (!res.ok) throw new Error('Error al crear clase');
       const claseCreada = await res.json();
 
-      setEvents((prev) => [
-        ...prev,
-        {
-          id: claseCreada._id,
-          title: claseCreada.nombre,
-          start: claseCreada.fechaInicio,
-          end: claseCreada.fechaFin
-        }
-      ]);
+      // Redirigir directamente a la edición
+      navigate(`/admin/clases/${claseCreada.id}`);
     } catch (err) {
       console.error(err);
       alert('No se pudo crear la clase');
@@ -87,12 +80,7 @@ export default function CalendarioAdmin() {
   };
 
   const handleEventClick = ({ event }) => {
-    setEventoSeleccionado(event);
-  };
-
-  const handleEliminarClase = (id) => {
-    setEvents((prev) => prev.filter((clase) => clase.id !== id));
-    setEventoSeleccionado(null);
+    navigate(`/admin/clases/${event.id}`);
   };
 
   if (esMovil === null) return null; // Esperar a saber si es móvil
@@ -132,14 +120,6 @@ export default function CalendarioAdmin() {
           }}
         />
       </div>
-
-      {eventoSeleccionado && (
-        <ClaseAdminModal
-          evento={eventoSeleccionado}
-          onClose={() => setEventoSeleccionado(null)}
-          onEliminar={() => handleEliminarClase(eventoSeleccionado.id)}
-        />
-      )}
     </>
   );
 }

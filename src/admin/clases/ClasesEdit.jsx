@@ -5,22 +5,97 @@ import {
   DateTimeInput,
   ReferenceInput,
   SelectInput,
-  NumberInput
+  NumberInput,
+  useInput,
+  Toolbar,
+  SaveButton,
+  useRecordContext,
+  useRedirect
 } from 'react-admin';
+import { TextField, Button, Stack } from '@mui/material';
+
+// Componente personalizado para elegir color
+function ColorPickerInput({ source, label }) {
+  const {
+    field,
+    fieldState: { error },
+    isRequired
+  } = useInput({ source });
+
+  return (
+    <TextField
+      {...field}
+      type="color"
+      label={label}
+      required={isRequired}
+      error={!!error}
+      helperText={error?.message}
+      InputLabelProps={{ shrink: true }}
+      sx={{ width: 140 }}
+    />
+  );
+}
+
+// Validación cruzada de fechas y campo nombre obligatorio
+function validateClase(values) {
+  const errors = {};
+
+  if (!values.nombre || typeof values.nombre !== 'string' || !values.nombre.trim()) {
+    errors.nombre = 'El nombre de la clase es obligatorio';
+  }
+
+  if (values.fechaInicio && values.fechaFin) {
+    const inicio = new Date(values.fechaInicio);
+    const fin = new Date(values.fechaFin);
+    if (fin <= inicio) {
+      errors.fechaFin = 'La fecha de fin debe ser posterior a la fecha de inicio';
+    }
+  }
+
+  return errors;
+}
+
+// Toolbar con botón extra
+function CustomToolbar() {
+  const record = useRecordContext();
+  const redirect = useRedirect();
+
+  return (
+    <Toolbar>
+      <SaveButton />
+      {record?.id && (
+        <Button
+          variant="outlined"
+          onClick={() => redirect(`/admin/clases/${record.id}/asistentes`)}
+          sx={{ ml: 2 }}>
+          Ver Asistentes
+        </Button>
+      )}
+    </Toolbar>
+  );
+}
 
 export default function ClasesEdit(props) {
   return (
     <Edit {...props} title="Editar Clase">
-      <SimpleForm>
+      <SimpleForm validate={validateClase} toolbar={<CustomToolbar />}>
         <TextInput source="id" disabled />
         <TextInput source="nombre" label="Nombre de la clase" />
         <DateTimeInput source="fechaInicio" label="Inicio" />
         <DateTimeInput source="fechaFin" label="Fin" />
         <NumberInput source="cupoMax" label="Cupo máximo" />
-        <TextInput source="color" label="Color" />
+        <ColorPickerInput source="color" label="Color de fondo" />
 
-        <ReferenceInput source="instructor" reference="usuarios" label="Instructor">
-          <SelectInput optionText={(record) => `${record.nombre} ${record.apellido}`} />
+        <ReferenceInput
+          source="instructor"
+          reference="usuarios"
+          label="Instructor"
+          filter={{ rol: 'instructor' }}>
+          <SelectInput
+            optionText={(record) =>
+              record ? `${record.nombre ?? ''} ${record.apellido ?? ''}`.trim() : ''
+            }
+          />
         </ReferenceInput>
       </SimpleForm>
     </Edit>

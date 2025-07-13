@@ -4,11 +4,39 @@ import {
   TextField,
   EmailField,
   BooleanField,
-  EditButton,
-  DeleteButton,
-  SimpleList
+  SimpleList,
+  useRecordContext
 } from 'react-admin';
-import { useMediaQuery } from '@mui/material';
+import { useMediaQuery, Button } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+const ADMIN_ROOT_ID = '68728251b003a6f29d060bf4';
+
+function CustomActions() {
+  const record = useRecordContext();
+
+  if (!record || record.id === ADMIN_ROOT_ID) return null;
+
+  return (
+    <>
+      <Button
+        color="primary"
+        size="small"
+        href={`/admin/usuarios/${record.id}`}
+        startIcon={<EditIcon />}>
+        EDITAR
+      </Button>
+      <Button
+        color="error"
+        size="small"
+        href={`/admin/usuarios/${record.id}/delete`}
+        startIcon={<DeleteIcon />}>
+        BORRAR
+      </Button>
+    </>
+  );
+}
 
 export default function UsuariosList(props) {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down('sm'));
@@ -25,18 +53,17 @@ export default function UsuariosList(props) {
           primaryText={(record) => `${record.nombre} ${record.apellido}`}
           secondaryText={(record) => record.correo}
           tertiaryText={(record) => `Rol: ${record.rol}`}
-          linkType="edit"
+          linkType={(record) => (record.id === ADMIN_ROOT_ID ? false : 'edit')}
         />
       ) : (
-        <Datagrid rowClick="edit">
+        <Datagrid>
           <TextField source="id" label="ID" />
           <TextField source="nombre" label="Nombre" />
           <TextField source="apellido" label="Apellido" />
           <EmailField source="correo" label="Correo" />
           <TextField source="rol" label="Rol" />
           <BooleanField source="estado" label="Estado" />
-          <EditButton />
-          <DeleteButton />
+          <CustomActions />
         </Datagrid>
       )}
     </List>
