@@ -1,9 +1,9 @@
-import gimnasioInfo from "../gimnasioInfo.js";
-
 export default class ActionProvider {
   constructor(crearMensajeBot, setStateFunc) {
     this.crearMensajeBot = crearMensajeBot;
     this.setState = setStateFunc;
+
+    this.info = null; // Caché en memoria
 
     this.handleVerHorarios = this.handleVerHorarios.bind(this);
     this.handleContacto = this.handleContacto.bind(this);
@@ -11,29 +11,53 @@ export default class ActionProvider {
     this.handlePlanes = this.handlePlanes.bind(this);
     this.handleDesconocido = this.handleDesconocido.bind(this);
     this.agregarMensaje = this.agregarMensaje.bind(this);
+    this.obtenerInfoGimnasio = this.obtenerInfoGimnasio.bind(this);
+  }
+
+  async obtenerInfoGimnasio() {
+    if (!this.info) {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/configuracion/default`); // Cambiá por tu URL real si es distinta
+      if (!res.ok) throw new Error('No se pudo obtener la información');
+      this.info = await res.json();
+    }
+    return this.info;
   }
 
   handleVerHorarios() {
-    const mensaje = this.crearMensajeBot(
-      'Estamos abiertos de lunes a viernes de 7 a 22hs y sábados de 9 a 14hs.'
-    );
+    const mensaje = this.crearMensajeBot('Estamos abiertos de lunes a sábados de 6 a 22hs.');
     this.agregarMensaje(mensaje);
   }
 
-  handleContacto() {
-    const mensaje = this.crearMensajeBot(
-      `Podés contactarnos al ${gimnasioInfo.telefono} o por Instagram: ${gimnasioInfo.redes.instagram_cuenta}.`
-    );
-    this.agregarMensaje(mensaje);
+  async handleContacto() {
+    try {
+      const info = await this.obtenerInfoGimnasio();
+      const mensaje = this.crearMensajeBot(
+        `Podés contactarnos por nuestro whatsapp al ${info.telefono} o por nuestra cuenta de Instagram a ${info.redes.instagram_cuenta}.`
+      );
+      this.agregarMensaje(mensaje);
+    } catch {
+      const mensaje = this.crearMensajeBot(
+        'No se pudo obtener la información de contacto en este momento.'
+      );
+      this.agregarMensaje(mensaje);
+    }
   }
 
-  handleUbicacion() {
-    const mensaje = this.crearMensajeBot(`Estamos en ${gimnasioInfo.direccion}, ${gimnasioInfo.ciudad}.`);
-    this.agregarMensaje(mensaje);
+  async handleUbicacion() {
+    try {
+      const info = await this.obtenerInfoGimnasio();
+      const mensaje = this.crearMensajeBot(`Estamos en ${info.direccion}, ${info.ciudad}.`);
+      this.agregarMensaje(mensaje);
+    } catch {
+      const mensaje = this.crearMensajeBot('No se pudo obtener la ubicación del gimnasio.');
+      this.agregarMensaje(mensaje);
+    }
   }
 
   handlePlanes() {
-    const mensaje = this.crearMensajeBot('Ofrecemos planes mensuales desde $5.000.');
+    const mensaje = this.crearMensajeBot(
+      'Nuestros planes varían entre $6.000 y $30.000 por mes, dependiendo si es solo musculación o incluye clases y extras.'
+    );
     this.agregarMensaje(mensaje);
   }
 
@@ -43,11 +67,9 @@ export default class ActionProvider {
   }
 
   agregarMensaje(mensaje) {
-    this.setState(function (anterior) {
-      return {
-        ...anterior,
-        messages: [...anterior.messages, mensaje]
-      };
-    });
+    this.setState((anterior) => ({
+      ...anterior,
+      messages: [...anterior.messages, mensaje]
+    }));
   }
 }
