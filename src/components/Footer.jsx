@@ -13,7 +13,7 @@ export default function Footer({ gimnasioInfo }) {
     <footer className="pt-3 pb-3" style={{ backgroundColor: '#ebe5d8' }}>
       <Container>
         <Row className="text-center text-md-start">
-          <Col md={3} className="mb-3">
+          <Col xs={12} md={6} lg={3} className="mb-3">
             <h5>Acerca de</h5>
             <p className="text-muted">
               Somos una empresa dedicada a ofrecer soluciones innovadoras para tus necesidades.
@@ -21,7 +21,7 @@ export default function Footer({ gimnasioInfo }) {
             <Image src={logo} alt="logo" height={120} />
           </Col>
 
-          <Col md={3} className="mb-3">
+          <Col xs={12} md={6} lg={3} className="mb-3">
             <h5>Enlaces</h5>
             <ul className="list-unstyled">
               <li>
@@ -47,7 +47,7 @@ export default function Footer({ gimnasioInfo }) {
             </ul>
           </Col>
 
-          <Col md={3} className="mb-3">
+          <Col xs={12} md={6} lg={3} className="mb-3">
             <h5>Contacto</h5>
             <ul className="list-unstyled">
               <li className="text-muted">Email: {gimnasioInfo?.email ?? 'No disponible'}</li>
@@ -71,7 +71,7 @@ export default function Footer({ gimnasioInfo }) {
             )}
           </Col>
 
-          <Col md={3} className="mb-3">
+          <Col xs={12} md={6} lg={3} className="mb-3">
             <h5>Ubicación</h5>
             <div className="ratio ratio-4x3">
               {gimnasioInfo?.ubicacion?.iframeSrc ? (
