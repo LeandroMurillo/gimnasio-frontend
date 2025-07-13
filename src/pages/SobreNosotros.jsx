@@ -1,6 +1,34 @@
+import { useEffect, useState } from 'react';
 import { Row, Col, Card, CardGroup } from 'react-bootstrap';
 
 export default function SobreNosotros() {
+  const [instructores, setInstructores] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+
+  useEffect(() => {
+    fetch(`${apiUrl}/usuarios/instructores`)
+      .then((res) => {
+        if (!res.ok) throw new Error('Error al obtener instructores');
+        return res.json();
+      })
+      .then((data) => {
+        setInstructores(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError('No se pudieron cargar los instructores');
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div className="text-center mt-5">Cargando instructores...</div>;
+  if (error) return <div className="text-danger text-center mt-5">{error}</div>;
+
   return (
     <div className="text-center">
       <h2 className="mb-4">¿Quiénes somos?</h2>
@@ -67,35 +95,23 @@ export default function SobreNosotros() {
 
       <h2 className="mt-5 mb-4">Profesores</h2>
       <CardGroup>
-        {[
-          {
-            nombre: 'Juan Villagra',
-            descripcion: 'Licenciado en nutrición y entrenador con orientación deportiva.',
-            img: 'src/assets/img/istockphoto-1448292619-612x612.jpg'
-          },
-          {
-            nombre: 'Camila Delgado',
-            descripcion: 'Preparadora Física y Entrenadora Personal titulada del ENADE.',
-            img: 'src/assets/img/istockphoto-1334046740-612x612.jpg'
-          },
-          {
-            nombre: 'Facundo Gomez',
-            descripcion: 'Profesor en Educación Física y Entrenamiento personalizado.',
-            img: 'src/assets/img/depositphotos_139559904-stock-photo-sports-teacher-writing-on-clipboard.jpg'
-          }
-        ].map((profe, i) => (
+        {instructores.map((profe, i) => (
           <Card key={i} className="m-2 shadow-sm">
             <Card.Img
               variant="top"
-              src={profe.img}
-              alt={profe.nombre}
+              src={
+                profe.img
+                  ? `${mediaUrl}${profe.img.startsWith('/') ? '' : '/'}${profe.img}`
+                  : 'https://via.placeholder.com/250x250?text=Sin+imagen'
+              }
+              alt={`${profe.nombre} ${profe.apellido}`}
               style={{ height: '250px', objectFit: 'cover' }}
             />
             <Card.Body>
               <Card.Title className="bg-warning rounded p-2 text-center text-uppercase">
-                {profe.nombre}
+                {profe.nombre} {profe.apellido}
               </Card.Title>
-              <Card.Text>{profe.descripcion}</Card.Text>
+              <Card.Text>{profe.descripcion || 'Instructor del gimnasio Rolling.'}</Card.Text>
             </Card.Body>
           </Card>
         ))}
