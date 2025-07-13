@@ -1,7 +1,7 @@
-import { Modal, Badge, Button } from 'react-bootstrap';
+import { Modal, Button, Alert } from 'react-bootstrap';
 
 export default function DetalleClaseModal({ evento, onHide }) {
-  const { cupoMax, asistentes } = evento.extendedProps;
+  const { cupoMax, asistentes, instructor } = evento.extendedProps;
   const libres = cupoMax - asistentes;
   const usuario = JSON.parse(localStorage.getItem('usuario'));
 
@@ -52,6 +52,21 @@ export default function DetalleClaseModal({ evento, onHide }) {
       hour12: true
     });
 
+  // Mensaje dinámico de cupo
+  let mensaje = '';
+  let color = 'success';
+
+  if (libres === 0) {
+    mensaje = '❌ Clase llena';
+    color = 'danger';
+  } else if (libres <= 3) {
+    mensaje = '⚠️ Últimos lugares disponibles';
+    color = 'warning';
+  } else {
+    mensaje = '✅ Todavía hay lugares disponibles';
+    color = 'success';
+  }
+
   return (
     <Modal show onHide={onHide} centered>
       <Modal.Header closeButton>
@@ -63,12 +78,15 @@ export default function DetalleClaseModal({ evento, onHide }) {
           Horario: {formatHora(evento.start)} – {formatHora(evento.end)}
         </p>
 
-        <p>
-          Cupos:{' '}
-          <Badge bg={libres ? 'success' : 'danger'}>
-            {libres}/{cupoMax}
-          </Badge>
-        </p>
+        {instructor?.nombre && (
+          <p>
+            Instructor: <strong>{`${instructor.nombre} ${instructor.apellido}`}</strong>
+          </p>
+        )}
+
+        <Alert variant={color} className="mt-2">
+          {mensaje}
+        </Alert>
 
         {clasePasada && (
           <p className="text-danger fw-semibold mt-2">

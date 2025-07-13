@@ -7,6 +7,7 @@ export default function CalendarioClases() {
   const [modal, setModal] = useState(null);
   const [events, setEvents] = useState([]);
   const [esMovil, setEsMovil] = useState(null); // null al principio para evitar parpadeos
+  const [rangoVisible, setRangoVisible] = useState({ start: null, end: null });
 
   // Detectar si es móvil
   useEffect(() => {
@@ -18,27 +19,17 @@ export default function CalendarioClases() {
     return () => window.removeEventListener('resize', actualizarVista);
   }, []);
 
-  // Cargar eventos
+  // Cargar eventos cuando cambia el rango visible
   useEffect(() => {
-    if (esMovil === null) return;
+    if (!rangoVisible.start || !rangoVisible.end) return;
 
-    const hoy = new Date();
-    const diaSemana = hoy.getDay();
-    const lunes = new Date(hoy);
-    lunes.setDate(hoy.getDate() - ((diaSemana + 6) % 7));
-    lunes.setHours(0, 0, 0, 0);
-    const domingo = new Date(lunes);
-    domingo.setDate(lunes.getDate() + 6);
-    domingo.setHours(23, 59, 59, 999);
-
-    const start = lunes.toISOString().split('T')[0];
-    const end = domingo.toISOString().split('T')[0];
-
-    fetch(`${import.meta.env.VITE_API_URL}/clases?start=${start}&end=${end}`)
+    fetch(
+      `${import.meta.env.VITE_API_URL}/clases?start=${rangoVisible.start}&end=${rangoVisible.end}`
+    )
       .then((res) => res.json())
       .then((data) => setEvents(data))
       .catch((err) => console.error('Error al cargar eventos:', err));
-  }, [esMovil]);
+  }, [rangoVisible]);
 
   if (esMovil === null) return null; // Esperar a saber si es móvil
 
@@ -79,6 +70,9 @@ export default function CalendarioClases() {
           className: new Date(ev.end) < new Date() ? 'pasada' : ''
         }))}
         eventClick={({ event }) => setModal(event)}
+        datesSet={({ startStr, endStr }) => {
+          setRangoVisible({ start: startStr, end: endStr });
+        }}
       />
 
       {modal && <DetalleClaseModal evento={modal} onHide={() => setModal(null)} />}
