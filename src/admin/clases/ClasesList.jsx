@@ -21,7 +21,7 @@ export default function ClasesList(props) {
       {...props}
       title="Clases"
       actions={<ClasesListActions />}
-      pagination={false} // 👈 Desactiva la paginación
+      pagination={false}
       sx={{ '& .RaList-actions': { mt: 2 } }}>
       {isSmall ? (
         <SimpleList

@@ -2,6 +2,7 @@ import { Admin, Resource, CustomRoutes } from 'react-admin';
 import { Route } from 'react-router-dom';
 import simpleRestProvider from 'ra-data-simple-rest';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
+import customSpanishMessages from './traducciones';
 
 import CustomLayout from './CustomLayout';
 
@@ -17,11 +18,11 @@ import CalendarioAdmin from './clases/CalendarioAdmin';
 import AsistentesClaseList from './clases/AsistentesClaseList';
 
 import MensajesList from './mensajes/MensajesList';
+
 import ConfiguracionEdit from './configuracion/ConfiguracionEdit';
 
 import Soporte from './Soporte';
 
-import customSpanishMessages from './traducciones';
 
 const i18nProvider = polyglotI18nProvider(() => customSpanishMessages, 'es');
 const dataProvider = simpleRestProvider(import.meta.env.VITE_API_URL);

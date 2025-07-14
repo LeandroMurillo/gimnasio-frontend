@@ -13,7 +13,6 @@ import imgLegPierna from '../assets/img/imgLegPierna.png';
 export default function Musculacos() {
   return (
     <>
-      {/* Banner principal */}
       <Image
         src={bannerMusculacos}
         alt="Banner Musculacos"
@@ -21,7 +20,6 @@ export default function Musculacos() {
         style={{ objectFit: 'cover' }}
       />
 
-      {/* Sección principal */}
       <section className="py-4">
         <Container>
           <Row className="justify-content-center">
@@ -61,7 +59,6 @@ export default function Musculacos() {
         </Container>
       </section>
 
-      {/* Sección de tarjetas */}
       <section className="pb-5">
         <Container>
           <CardGroup>

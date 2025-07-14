@@ -23,7 +23,7 @@ export default function TarjetaPlanes({ titulo, descripcion, precio, planId, set
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}` // ✅ Lo que espera tu backend
+          Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({
           titulo,

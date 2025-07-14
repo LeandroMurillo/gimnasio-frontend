@@ -5,11 +5,7 @@ export default function MensajesList(props) {
   const esPequenio = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
   return (
-    <List
-      {...props}
-      title="Mensajes"
-      sx={{ '& .RaList-actions': { mt: 2 } }} // Espaciado superior para botones
-    >
+    <List {...props} title="Mensajes" sx={{ '& .RaList-actions': { mt: 2 } }}>
       {esPequenio ? (
         <SimpleList
           primaryText={(record) => record.nombre}

@@ -1,4 +1,4 @@
-import { Edit, SimpleForm, TextInput, Toolbar, SaveButton } from 'react-admin';
+import { Edit, SimpleForm, TextInput } from 'react-admin';
 import CustomToolbar from '../CustomToolbar';
 
 export default function ConfiguracionEdit(props) {

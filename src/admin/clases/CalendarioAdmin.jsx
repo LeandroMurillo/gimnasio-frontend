@@ -46,7 +46,6 @@ export default function CalendarioAdmin() {
   }, [esMovil]);
 
   const handleSelect = (info) => {
-    console.log('Seleccionado:', info); // Para debug
     navigate('/admin/clases/create', {
       state: {
         fechaInicio: info.startStr,

@@ -32,8 +32,8 @@ export default {
       cancel: 'Cancelar',
       refresh: 'Actualizar',
       search: 'Buscar',
-      export: 'Exportar', // ✅ ya estaba
-      unselect: 'Deseleccionar' // ✅ faltante
+      export: 'Exportar',
+      unselect: 'Deseleccionar'
     },
     message: {
       ...spanishMessages.ra?.message,
@@ -41,11 +41,11 @@ export default {
       no: 'No'
     },
     sort: {
-      ASC: 'Ascendente', // ✅ faltante
-      DESC: 'Descendente' // ✅ faltante
+      ASC: 'Ascendente',
+      DESC: 'Descendente'
     },
     configurable: {
-      customize: 'Personalizar' // ✅ faltante
+      customize: 'Personalizar'
     },
     menu: {
       usuarios: 'Usuarios',

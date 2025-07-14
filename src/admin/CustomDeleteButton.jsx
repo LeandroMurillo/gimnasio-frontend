@@ -10,13 +10,6 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useState } from 'react';
 
-/**
- * Botón de eliminación con confirmación por diálogo.
- * @param {object} record - El recurso a eliminar.
- * @param {string} resource - El nombre del recurso en plural (ej. "clases", "usuarios").
- * @param {string} label - Nombre singular para mostrar en los textos (ej. "clase", "usuario").
- * @param {string} redirectPath - Ruta a la cual redirigir luego de la eliminación.
- */
 export default function CustomDeleteButton({
   record,
   resource,

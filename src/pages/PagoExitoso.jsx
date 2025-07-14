@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Spinner, Alert } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
 
 export default function PagoExitoso() {
   const location = useLocation();

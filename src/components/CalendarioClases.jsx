@@ -6,20 +6,18 @@ import DetalleClaseModal from './DetalleClaseModal';
 export default function CalendarioClases() {
   const [modal, setModal] = useState(null);
   const [events, setEvents] = useState([]);
-  const [esMovil, setEsMovil] = useState(null); // null al principio para evitar parpadeos
+  const [esMovil, setEsMovil] = useState(null);
   const [rangoVisible, setRangoVisible] = useState({ start: null, end: null });
 
-  // Detectar si es móvil
   useEffect(() => {
     const actualizarVista = () => {
       setEsMovil(window.innerWidth < 768);
     };
-    actualizarVista(); // Inicial
+    actualizarVista();
     window.addEventListener('resize', actualizarVista);
     return () => window.removeEventListener('resize', actualizarVista);
   }, []);
 
-  // Cargar eventos cuando cambia el rango visible
   useEffect(() => {
     if (!rangoVisible.start || !rangoVisible.end) return;
 
@@ -31,7 +29,7 @@ export default function CalendarioClases() {
       .catch((err) => console.error('Error al cargar eventos:', err));
   }, [rangoVisible]);
 
-  if (esMovil === null) return null; // Esperar a saber si es móvil
+  if (esMovil === null) return null;
 
   return (
     <>
@@ -48,7 +46,7 @@ export default function CalendarioClases() {
       </style>
 
       <FullCalendar
-        key={esMovil ? 'movil' : 'desktop'} // Forzar re-render cuando cambia
+        key={esMovil ? 'movil' : 'desktop'}
         plugins={[timeGridPlugin]}
         initialView={esMovil ? 'timeGridDay' : 'timeGridWeek'}
         locale="es"

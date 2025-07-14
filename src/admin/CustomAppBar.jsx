@@ -21,7 +21,7 @@ export default function CustomAppBar(props) {
   };
 
   const handleVisitarPagina = () => {
-    window.open('/', '_blank'); // Abre la página principal en una nueva pestaña
+    window.open('/', '_blank');
   };
 
   return (

@@ -20,7 +20,6 @@ export default function NavbarComponent() {
             Bienvenido/a {usuario.nombre} {usuario.apellido}
           </span>
 
-          {/* Solo en desktop */}
           {usuario.rol === 'admin' && (
             <Button
               variant="dark"

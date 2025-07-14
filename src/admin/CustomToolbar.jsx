@@ -1,7 +1,7 @@
 import { Toolbar, SaveButton, DeleteButton, useRecordContext, useRedirect } from 'react-admin';
 import { Button, Stack } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CustomDeleteButton from './CustomDeleteButton'; // ✅ nuevo nombre
+import CustomDeleteButton from './CustomDeleteButton';
 
 export default function CustomToolbar({
   showDelete = false,

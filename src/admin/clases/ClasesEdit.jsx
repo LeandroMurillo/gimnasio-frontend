@@ -32,7 +32,6 @@ function ColorPickerInput({ source, label }) {
   );
 }
 
-// Validación cruzada de fechas y campo nombre obligatorio
 function validateClase(values) {
   const errors = {};
 

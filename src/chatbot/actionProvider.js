@@ -3,7 +3,7 @@ export default class ActionProvider {
     this.crearMensajeBot = crearMensajeBot;
     this.setState = setStateFunc;
 
-    this.info = null; // Caché en memoria
+    this.info = null;
 
     this.handleVerHorarios = this.handleVerHorarios.bind(this);
     this.handleContacto = this.handleContacto.bind(this);
