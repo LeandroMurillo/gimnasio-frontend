@@ -3,9 +3,9 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Container from 'react-bootstrap/Container';
 
-import adidas from '../assets/img/adidas-logo-black-symbol-clothes-design-icon-abstract-football-illustration-with-white-background-free-vector.jpg';
-import under from '../assets/img/Under_armour_logo.svg.png';
-import nike from '../assets/img/images.png';
+import adidas from '../assets/img/adidas-logo.png';
+import under from '../assets/img/under-armour-logo.png';
+import nike from '../assets/img/nike-logo.png';
 
 export default function MarcasAsociadas() {
   const marcas = [

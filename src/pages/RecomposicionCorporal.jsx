@@ -1,16 +1,19 @@
 import { Row, Col, Card, CardGroup, Container, Image } from 'react-bootstrap';
+import bannerRecomposicion from '../assets/img/bannerRecomposicion.jpg';
+import imgSentadillas from '../assets/img/imgSentadillas.webp';
+import imgFlexiones from '../assets/img/imgFlexiones.jpg';
+import imgDominadas from '../assets/img/imgDominadas.jpg';
 
 export default function RecomposicionCorporal() {
   return (
     <div>
       <Image
-        src="src/assets/img/1140-exercise-class-esp.jpg"
+        src={bannerRecomposicion}
         alt="Banner recomposición"
         className="w-100"
         style={{ objectFit: 'cover' }}
       />
 
-      {/* Sección de descripción */}
       <section className="py-4">
         <Container>
           <Row className="justify-content-center">
@@ -50,7 +53,7 @@ export default function RecomposicionCorporal() {
             <Card className="m-3 shadow-sm border-0">
               <Card.Img
                 variant="top"
-                src="src/assets/img/sentadillas-1072392408.webp"
+                src={imgSentadillas}
                 style={{ height: '200px', objectFit: 'cover' }}
               />
               <Card.Body className="text-center">
@@ -65,7 +68,7 @@ export default function RecomposicionCorporal() {
             <Card className="m-3 shadow-sm border-0">
               <Card.Img
                 variant="top"
-                src="src/assets/img/dr-joe-demarco-attempts-to-break-the-world-record-for-the-news-photo-1655810983.jpg"
+                src={imgFlexiones}
                 style={{ height: '200px', objectFit: 'cover' }}
               />
               <Card.Body className="text-center">
@@ -79,7 +82,7 @@ export default function RecomposicionCorporal() {
             <Card className="m-3 shadow-sm border-0">
               <Card.Img
                 variant="top"
-                src="src/assets/img/16920356482804.jpg"
+                src={imgDominadas}
                 style={{ height: '200px', objectFit: 'cover' }}
               />
               <Card.Body className="text-center">

@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Row, Col, Card, CardGroup } from 'react-bootstrap';
 
+import imgLucas from '../assets/img/imgLucas.png';
+import imgSergio from '../assets/img/imgSergio.jpg';
+import imgLeandro from '../assets/img/imgLeandro.jpg';
+import imgNicolas from '../assets/img/imgNicolas.png';
+import imgEzequiel from '../assets/img/imgEzequiel.jpg';
+
 export default function SobreNosotros() {
   const [instructores, setInstructores] = useState([]);
   const [error, setError] = useState(null);
@@ -25,6 +31,34 @@ export default function SobreNosotros() {
 
   if (error) return <div className="text-danger text-center mt-5">{error}</div>;
 
+  const equipo = [
+    {
+      nombre: 'Lucas Amado',
+      rol: 'Orientado a Backend',
+      img: imgLucas
+    },
+    {
+      nombre: 'Sergio Salazar',
+      rol: 'Orientado a Backend',
+      img: imgSergio
+    },
+    {
+      nombre: 'Leandro Murillo',
+      rol: 'Full Stack',
+      img: imgLeandro
+    },
+    {
+      nombre: 'Nicolas Moya',
+      rol: 'Orientado a Backend',
+      img: imgNicolas
+    },
+    {
+      nombre: 'Ezequiel Calvetti',
+      rol: 'Orientado a Frontend',
+      img: imgEzequiel
+    }
+  ];
+
   return (
     <div className="text-center">
       <h2 className="mb-4">¿Quiénes somos?</h2>
@@ -44,33 +78,7 @@ export default function SobreNosotros() {
       </p>
 
       <Row className="g-4 justify-content-center">
-        {[
-          {
-            nombre: 'Lucas Amado',
-            rol: 'Orientado a Backend',
-            img: 'src/assets/img/file (2).png'
-          },
-          {
-            nombre: 'Sergio Salazar',
-            rol: 'Orientado a Backend',
-            img: 'src/assets/img/473400948_620461827024099_1369816849356254613_n.jpg'
-          },
-          {
-            nombre: 'Leandro Murillo',
-            rol: 'Full Stack',
-            img: 'src/assets/img/377372335_151210151392378_1088626145779674739_n.jpg'
-          },
-          {
-            nombre: 'Nicolas Moya',
-            rol: 'Orientado a Backend',
-            img: 'src/assets/img/file.png'
-          },
-          {
-            nombre: 'Ezequiel Calvetti',
-            rol: 'Orientado a Frontend',
-            img: 'src/assets/img/IMG-20250406-WA0002.jpg'
-          }
-        ].map((miembro, i) => (
+        {equipo.map((miembro, i) => (
           <Col key={i} xs={12} sm={6} md={4} lg={3}>
             <Card className="h-100 shadow-sm">
               <Card.Img

@@ -33,7 +33,7 @@ export default function NavbarComponent() {
         </div>
       )}
 
-      <Navbar expand="lg" style={{ backgroundColor: '#ebe5d8' }}>
+      <Navbar expand="lg" style={{ backgroundColor: '#f2ecde' }}>
         <Container>
           <Navbar.Brand as={Link} to="/">
             <Image

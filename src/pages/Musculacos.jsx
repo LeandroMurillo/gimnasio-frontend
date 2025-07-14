@@ -5,7 +5,10 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Image from 'react-bootstrap/Image';
 
-import bannerMusculacos from '../assets/img/BannerMusculacos.webp';
+import bannerMusculacos from '../assets/img/bannerMusculacos.webp';
+import imgPushEmpuje from '../assets/img/imgPushEmpuje.png';
+import imgPullTraccion from '../assets/img/imgPullTraccion.png';
+import imgLegPierna from '../assets/img/imgLegPierna.png';
 
 export default function Musculacos() {
   return (
@@ -65,7 +68,7 @@ export default function Musculacos() {
             <Card className="m-2 shadow-sm border-0">
               <Card.Img
                 variant="top"
-                src="src/assets/img/push_empuje1645691939767-1657194936028-1024x576.png"
+                src={imgPushEmpuje}
                 style={{ height: '200px', objectFit: 'cover' }}
               />
               <Card.Body className="text-center">
@@ -77,7 +80,7 @@ export default function Musculacos() {
             <Card className="m-2 shadow-sm border-0">
               <Card.Img
                 variant="top"
-                src="src/assets/img/pull_traccion1645691939759-1657194936024-1024x576.png"
+                src={imgPullTraccion}
                 style={{ height: '200px', objectFit: 'cover' }}
               />
               <Card.Body className="text-center">
@@ -89,7 +92,7 @@ export default function Musculacos() {
             <Card className="m-2 shadow-sm border-0">
               <Card.Img
                 variant="top"
-                src="src/assets/img/pierna1645691939773-1657194936019-1024x576.png"
+                src={imgLegPierna}
                 style={{ height: '200px', objectFit: 'cover' }}
               />
               <Card.Body className="text-center">

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Row, Col, Form, Button, Card, Image } from 'react-bootstrap';
-import iconoCasa from '../assets/img/icone-de-la-maison-orange.png';
-import iconoGmail from '../assets/img/icone-gmail-logo-png-orange.png';
-import iconoComentario from '../assets/img/icone-de-commentaire-et-de-retroaction-orange.png';
+import iconoCasa from '../assets/img/iconoCasa.png';
+import iconoGmail from '../assets/img/iconoGmail.png';
+import iconoComentario from '../assets/img/iconoComentario.png';
 
 export default function Contacto({ gimnasioInfo }) {
   const [formData, setFormData] = useState({

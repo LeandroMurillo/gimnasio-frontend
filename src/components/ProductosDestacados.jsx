@@ -1,8 +1,8 @@
 import { Card, CardGroup } from 'react-bootstrap';
 
-import proteina from '../assets/img/156495-800-auto.png';
-import botellas from '../assets/img/sport.jpg';
-import guantes from '../assets/img/dgamgu009b-m-guante-de-fitness-king-2-0-_-drb-m-0eb83b3de388166a0517265016471273-1024-1024.jpg';
+import proteina from '../assets/img/proteina.png';
+import botellas from '../assets/img/botellas.jpg';
+import guantes from '../assets/img/guantes.jpg';
 
 const productos = [
   {

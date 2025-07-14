@@ -9,7 +9,8 @@ export default function Registro() {
     apellido: '',
     correo: '',
     telefono: '',
-    password: ''
+    password: '',
+    confirmarPassword: ''
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -26,15 +27,21 @@ export default function Registro() {
     setError('');
     setSuccess('');
 
-    // Validación simple del teléfono
+    // Validación de teléfono
     const telefonoRegex = /^[0-9]{7,15}$/;
     if (!telefonoRegex.test(formData.telefono)) {
       setError('El teléfono debe contener solo números y tener entre 7 y 15 dígitos');
       return;
     }
 
+    // Validación de coincidencia de contraseñas
+    if (formData.password !== formData.confirmarPassword) {
+      setError('Las contraseñas no coinciden');
+      return;
+    }
+
     try {
-      const body = { ...formData, rol: 'usuario' };
+      const { confirmarPassword, ...body } = { ...formData, rol: 'usuario' };
 
       const resp = await fetch(`${import.meta.env.VITE_API_URL}/usuarios`, {
         method: 'POST',
@@ -124,6 +131,17 @@ export default function Registro() {
                   type="password"
                   name="password"
                   value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Confirmar contraseña</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="confirmarPassword"
+                  value={formData.confirmarPassword}
                   onChange={handleChange}
                   required
                 />

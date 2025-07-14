@@ -5,12 +5,15 @@ import Image from 'react-bootstrap/Image';
 import logo from '../assets/img/logo.png';
 import fasebook from '../assets/img/facebook.png';
 import instagram from '../assets/img/instagram.png';
+import { Link } from 'react-router-dom';
 
 export default function Footer({ gimnasioInfo }) {
   if (!gimnasioInfo) return null;
 
+  const handleScrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
   return (
-    <footer className="pt-3 pb-3" style={{ backgroundColor: '#ebe5d8' }}>
+    <footer className="pt-3 pb-3" style={{ backgroundColor: '#f2ecde' }}>
       <Container>
         <Row className="text-center text-md-start">
           <Col xs={12} md={6} lg={3} className="mb-3">
@@ -25,24 +28,33 @@ export default function Footer({ gimnasioInfo }) {
             <h5>Enlaces</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="#" className="text-decoration-none text-dark">
+                <Link to="/" onClick={handleScrollTop} className="text-decoration-none text-dark">
                   Inicio
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-decoration-none text-dark">
-                  Servicios
-                </a>
+                <Link
+                  to="/planes"
+                  onClick={handleScrollTop}
+                  className="text-decoration-none text-dark">
+                  Planes
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-decoration-none text-dark">
+                <Link
+                  to="/contacto"
+                  onClick={handleScrollTop}
+                  className="text-decoration-none text-dark">
                   Contacto
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-decoration-none text-dark">
+                <Link
+                  to="/recomposicion"
+                  onClick={handleScrollTop}
+                  className="text-decoration-none text-dark">
                   Blog
-                </a>
+                </Link>
               </li>
             </ul>
           </Col>

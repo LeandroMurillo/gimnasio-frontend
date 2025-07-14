@@ -40,6 +40,12 @@ export default function Login() {
           <Card className="p-4 shadow">
             <h3 className="mb-4 text-center">Iniciar Sesión</h3>
 
+            {error && (
+              <Alert variant="danger" className="text-center">
+                {error}
+              </Alert>
+            )}
+
             <Form onSubmit={handleLogin}>
               <Form.Group className="mb-3">
                 <Form.Label>Correo electrónico</Form.Label>
@@ -60,12 +66,6 @@ export default function Login() {
                   required
                 />
               </Form.Group>
-
-              {error && (
-                <Alert variant="danger" className="text-center">
-                  {error}
-                </Alert>
-              )}
 
               <div className="text-center mt-3 mb-3">
                 ¿Todavía no tienes una cuenta? <Link to="/registro">Regístrate</Link>

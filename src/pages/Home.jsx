@@ -7,8 +7,8 @@ import Image from 'react-bootstrap/Image';
 
 import MarcasAsociadas from '../components/MarcasAsociadas';
 import ProductosDestacados from '../components/ProductosDestacados';
-import banner from '../assets/img/banner gimnasio Rolling.png';
-import promoVideo from '../assets/video/Gym Rolling Promo_free.mp4';
+import banner from '../assets/img/banner.png';
+import promoVideo from '../assets/video/promoVideo.mp4';
 
 const clasesPopulares = [
   {
