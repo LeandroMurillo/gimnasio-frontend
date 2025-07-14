@@ -32,7 +32,7 @@ export default class ActionProvider {
     try {
       const info = await this.obtenerInfoGimnasio();
       const mensaje = this.crearMensajeBot(
-        `Podés contactarnos por nuestro whatsapp al ${info.telefono} o por nuestra cuenta de Instagram a ${info.redes.instagram_cuenta}.`
+        `Podés contactarnos por nuestro whatsapp al ${info.telefono} o por nuestra cuenta de Instagram a @gimnasio_rolling.`
       );
       this.agregarMensaje(mensaje);
     } catch {
