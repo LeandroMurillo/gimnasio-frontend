@@ -2,6 +2,8 @@ import { Container, Nav, Navbar, NavDropdown, Button, Image } from 'react-bootst
 import { Link, useNavigate } from 'react-router-dom';
 import ClimaActual from './ClimaActual';
 
+import logo from '../assets/img/logo.png'
+
 export default function NavbarComponent() {
   const navigate = useNavigate();
   const usuario = JSON.parse(localStorage.getItem('usuario'));
@@ -36,8 +38,8 @@ export default function NavbarComponent() {
         <Container>
           <Navbar.Brand as={Link} to="/">
             <Image
-              src="src/assets/img/logo.png"
-              alt="Logo"
+              src={logo}
+              alt="logo"
               style={{
                 height: '120px',
                 marginRight: '15px',

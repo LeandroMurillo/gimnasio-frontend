@@ -20,6 +20,10 @@ export default {
       next: 'Siguiente',
       previous: 'Anterior'
     },
+    page: {
+      ...spanishMessages.ra?.page,
+      empty: 'No hay resultados para mostrar'
+    },
     action: {
       ...spanishMessages.ra?.action,
       edit: 'Editar',

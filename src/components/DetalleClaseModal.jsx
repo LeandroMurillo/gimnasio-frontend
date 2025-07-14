@@ -87,7 +87,6 @@ export default function DetalleClaseModal({ evento, onHide }) {
   const deshabilitarInscripcion =
     libres <= 0 ||
     clasePasada ||
-    !usuario ||
     (mensaje &&
       (mensaje.includes('Tu plan no te permite') || mensaje.includes('no tiene un plan activo')));
 
