@@ -10,7 +10,15 @@ export default function PagoExitoso() {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const paymentId = queryParams.get('payment_id');
-    const planId = queryParams.get('planId');
+
+    const externalRef = queryParams.get('external_reference');
+    let planId = null;
+    try {
+      planId = JSON.parse(externalRef)?.planId || null;
+    } catch {
+      planId = null;
+    }
+
     const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
     const token = usuario.token;
 
