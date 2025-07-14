@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Image from 'react-bootstrap/Image';
 
-import bannerMusculacos from '../assets/img/bannerMusculacos.webp';
+import bannerMusculacos from '../assets/img/BannerMusculacos.webp';
 import imgPushEmpuje from '../assets/img/imgPushEmpuje.png';
 import imgPullTraccion from '../assets/img/imgPullTraccion.png';
 import imgLegPierna from '../assets/img/imgLegPierna.png';
