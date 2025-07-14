@@ -56,12 +56,15 @@ export default function CalendarioClases() {
         slotMinTime="06:00:00"
         slotMaxTime="22:00:00"
         slotDuration="01:00:00"
+        buttonText={{
+          today: 'hoy'
+        }}
         dayHeaderFormat={{ weekday: 'long' }}
         slotLabelFormat={{ hour: '2-digit', minute: '2-digit', hour12: false }}
         headerToolbar={{
-          left: '',
-          center: 'title',
-          right: ''
+          left: esMovil ? 'prev' : '',
+          center: esMovil ? 'title today' : 'title',
+          right: esMovil ? 'next' : ''
         }}
         events={events.map((ev) => ({
           ...ev,
