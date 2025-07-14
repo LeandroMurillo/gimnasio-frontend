@@ -11,11 +11,14 @@ export default function PagoExitoso() {
     const queryParams = new URLSearchParams(location.search);
     const paymentId = queryParams.get('payment_id');
 
-    const externalRef = queryParams.get('external_reference');
+    const externalRefRaw = queryParams.get('external_reference');
     let planId = null;
+
     try {
+      const externalRef = decodeURIComponent(externalRefRaw);
       planId = JSON.parse(externalRef)?.planId || null;
-    } catch {
+    } catch (e) {
+      console.error('Error al decodificar external_reference:', e);
       planId = null;
     }
 
