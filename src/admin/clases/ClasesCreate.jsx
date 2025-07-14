@@ -9,8 +9,9 @@ import {
   useInput
 } from 'react-admin';
 import { TextField } from '@mui/material';
+import { useLocation } from 'react-router-dom';
+import CustomToolbar from '../CustomToolbar';
 
-// Componente para selector de color
 function ColorPickerInput({ source, label }) {
   const {
     field,
@@ -32,16 +33,13 @@ function ColorPickerInput({ source, label }) {
   );
 }
 
-// Validación de campos
 function validateClase(values) {
   const errors = {};
 
-  // Validar nombre obligatorio
   if (!values.nombre || typeof values.nombre !== 'string' || !values.nombre.trim()) {
     errors.nombre = 'El nombre de la clase es obligatorio';
   }
 
-  // Validación cruzada de fechas
   if (values.fechaInicio && values.fechaFin) {
     const inicio = new Date(values.fechaInicio);
     const fin = new Date(values.fechaFin);
@@ -50,7 +48,6 @@ function validateClase(values) {
     }
   }
 
-  // Validar cupo máximo
   if (values.cupoMax === undefined || values.cupoMax === null || values.cupoMax <= 0) {
     errors.cupoMax = 'El cupo máximo debe ser mayor que cero';
   }
@@ -59,9 +56,19 @@ function validateClase(values) {
 }
 
 export default function ClasesCreate(props) {
+  const location = useLocation();
+  const { fechaInicio, fechaFin } = location.state || {};
+
   return (
     <Create {...props} title="Crear Clase">
-      <SimpleForm validate={validateClase} defaultValues={{ cupoMax: 30 }}>
+      <SimpleForm
+        validate={validateClase}
+        toolbar={<CustomToolbar />}
+        defaultValues={{
+          cupoMax: 30,
+          fechaInicio: fechaInicio || null,
+          fechaFin: fechaFin || null
+        }}>
         <TextInput
           source="nombre"
           label="Nombre de la clase"

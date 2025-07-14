@@ -14,10 +14,22 @@ export default function NavbarComponent() {
 
   return (
     <>
-      {/* Fila superior solo si está logueado y es rol usuario */}
-      {usuario && usuario.rol === 'usuario' && (
-        <div className="w-100 bg-warning-subtle text-center py-2 fw-bold">
-          Bienvenido/a {usuario.nombre} {usuario.apellido}
+      {usuario && (
+        <div className="w-100 bg-warning-subtle py-2 text-center fw-bold d-flex justify-content-center align-items-center gap-3 flex-wrap">
+          <span className="mb-0">
+            Bienvenido/a {usuario.nombre} {usuario.apellido}
+          </span>
+
+          {/* Solo en desktop */}
+          {usuario.rol === 'admin' && (
+            <Button
+              variant="dark"
+              size="sm"
+              className="fw-bold d-none d-lg-inline"
+              onClick={() => navigate('/admin')}>
+              Panel de Administración
+            </Button>
+          )}
         </div>
       )}
 
@@ -69,13 +81,25 @@ export default function NavbarComponent() {
                 <ClimaActual />
               </div>
 
-              {usuario && usuario.rol === 'usuario' ? (
-                <Button
-                  variant="outline-danger"
-                  className="fw-bold mt-2 mt-lg-0 ms-lg-3"
-                  onClick={handleLogout}>
-                  Cerrar sesión
-                </Button>
+              {usuario ? (
+                <>
+                  {usuario.rol === 'admin' && (
+                    <Button
+                      variant="dark"
+                      size="sm"
+                      className="fw-bold mt-2 mt-lg-0 ms-lg-3 d-inline d-lg-none"
+                      onClick={() => navigate('/admin')}>
+                      Panel de Administración
+                    </Button>
+                  )}
+
+                  <Button
+                    variant="outline-danger"
+                    className="fw-bold mt-2 mt-lg-0 ms-lg-3"
+                    onClick={handleLogout}>
+                    Cerrar sesión
+                  </Button>
+                </>
               ) : (
                 <Button
                   variant="warning"

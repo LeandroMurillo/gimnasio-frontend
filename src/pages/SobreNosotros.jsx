@@ -3,7 +3,6 @@ import { Row, Col, Card, CardGroup } from 'react-bootstrap';
 
 export default function SobreNosotros() {
   const [instructores, setInstructores] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -17,16 +16,13 @@ export default function SobreNosotros() {
       })
       .then((data) => {
         setInstructores(data);
-        setLoading(false);
       })
       .catch((err) => {
         console.error(err);
         setError('No se pudieron cargar los instructores');
-        setLoading(false);
       });
   }, []);
 
-  if (loading) return <div className="text-center mt-5">Cargando instructores...</div>;
   if (error) return <div className="text-danger text-center mt-5">{error}</div>;
 
   return (

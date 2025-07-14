@@ -56,7 +56,7 @@ export default function ChatbotContainer() {
           fontSize: '0.85rem',
           color: '#333'
         }}>
-        {!isMobile && <span>¿Dudas? ¡Preguntale a GymBot!</span>}
+        {!isMobile && <span>¿Dudas? Pregúntale a GymBot!</span>}
         <SmartToyIcon style={{ fontSize: 26, color: '#1976d2' }} />
       </Button>
     </>

@@ -24,6 +24,7 @@ export default {
       ...spanishMessages.ra?.action,
       edit: 'Editar',
       delete: 'Borrar',
+      confirm: 'Confirmar',
       show: 'Ver',
       list: 'Lista',
       save: 'Guardar',

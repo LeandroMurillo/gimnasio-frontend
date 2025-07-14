@@ -6,15 +6,11 @@ import {
   ReferenceInput,
   SelectInput,
   NumberInput,
-  useInput,
-  Toolbar,
-  SaveButton,
-  useRecordContext,
-  useRedirect
+  useInput
 } from 'react-admin';
-import { TextField, Button, Stack } from '@mui/material';
+import { TextField } from '@mui/material';
+import CustomToolbar from '../CustomToolbar';
 
-// Componente personalizado para elegir color
 function ColorPickerInput({ source, label }) {
   const {
     field,
@@ -55,30 +51,21 @@ function validateClase(values) {
   return errors;
 }
 
-// Toolbar con botón extra
-function CustomToolbar() {
-  const record = useRecordContext();
-  const redirect = useRedirect();
-
-  return (
-    <Toolbar>
-      <SaveButton />
-      {record?.id && (
-        <Button
-          variant="outlined"
-          onClick={() => redirect(`/admin/clases/${record.id}/asistentes`)}
-          sx={{ ml: 2 }}>
-          Ver Asistentes
-        </Button>
-      )}
-    </Toolbar>
-  );
-}
-
 export default function ClasesEdit(props) {
   return (
     <Edit {...props} title="Editar Clase">
-      <SimpleForm validate={validateClase} toolbar={<CustomToolbar />}>
+      <SimpleForm
+        validate={validateClase}
+        toolbar={
+          <CustomToolbar
+            showDelete
+            showAsistentes
+            useCustomDelete
+            resource="clases"
+            label="clase"
+            resourcePath="/admin/clases"
+          />
+        }>
         <TextInput source="id" disabled />
         <TextInput source="nombre" label="Nombre de la clase" />
         <DateTimeInput source="fechaInicio" label="Inicio" />

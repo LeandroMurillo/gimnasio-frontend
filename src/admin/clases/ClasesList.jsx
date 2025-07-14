@@ -5,7 +5,8 @@ import {
   TextField,
   DateField,
   EditButton,
-  DeleteButton
+  DeleteButton,
+  FunctionField
 } from 'react-admin';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
@@ -20,8 +21,8 @@ export default function ClasesList(props) {
       {...props}
       title="Clases"
       actions={<ClasesListActions />}
-      sx={{ '& .RaList-actions': { mt: 2 } }} // Espacio entre AppBar y acciones
-    >
+      pagination={false} // 👈 Desactiva la paginación
+      sx={{ '& .RaList-actions': { mt: 2 } }}>
       {isSmall ? (
         <SimpleList
           primaryText={(record) => record.nombre}
@@ -33,7 +34,9 @@ export default function ClasesList(props) {
               minute: '2-digit'
             })
           }
-          tertiaryText={(record) => `Instructor: ${record.instructor?.nombre}`}
+          tertiaryText={(record) =>
+            `Instructor: ${record.instructor?.nombre} ${record.instructor?.apellido}`
+          }
           linkType="edit"
         />
       ) : (
@@ -41,7 +44,12 @@ export default function ClasesList(props) {
           <TextField source="nombre" label="Nombre" />
           <DateField source="fechaInicio" label="Inicio" showTime />
           <DateField source="fechaFin" label="Fin" showTime />
-          <TextField source="instructor.nombre" label="Instructor" />
+          <FunctionField
+            label="Instructor"
+            render={(record) =>
+              `${record.instructor?.nombre ?? ''} ${record.instructor?.apellido ?? ''}`
+            }
+          />
           <TextField source="cupoMax" label="Cupo Máx." />
           <EditButton />
           <DeleteButton />

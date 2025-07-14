@@ -1,9 +1,10 @@
 import { Create, SimpleForm, TextInput, BooleanInput } from 'react-admin';
+import CustomToolbar from '../CustomToolbar';
 
 export default function UsuariosCreate(props) {
   return (
     <Create {...props} title="Crear Usuario">
-      <SimpleForm>
+      <SimpleForm toolbar={<CustomToolbar resourcePath="/admin/usuarios" />}>
         <TextInput source="nombre" label="Nombre" />
         <TextInput source="apellido" label="Apellido" />
         <TextInput source="correo" label="Correo Electrónico" />

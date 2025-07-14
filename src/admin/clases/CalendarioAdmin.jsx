@@ -6,10 +6,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 export default function CalendarioAdmin() {
   const [events, setEvents] = useState([]);
-  const [esMovil, setEsMovil] = useState(null); // Para detectar si es móvil
+  const [esMovil, setEsMovil] = useState(null);
   const navigate = useNavigate();
 
-  // Detectar si es móvil
   useEffect(() => {
     const actualizarVista = () => {
       setEsMovil(window.innerWidth < 768);
@@ -19,7 +18,6 @@ export default function CalendarioAdmin() {
     return () => window.removeEventListener('resize', actualizarVista);
   }, []);
 
-  // Cargar eventos una vez que se detecta si es móvil o no
   useEffect(() => {
     if (esMovil === null) return;
 
@@ -47,43 +45,21 @@ export default function CalendarioAdmin() {
     cargarEventos();
   }, [esMovil]);
 
-  const handleSelect = async (info) => {
-    const nombre = prompt('Ingrese el nombre de la clase:');
-    if (!nombre) return;
-
-    const nuevaClase = {
-      nombre,
-      fechaInicio: info.startStr,
-      fechaFin: info.endStr,
-      categoria: '64f123abc123...', // <- Reemplazar con ID real si se usa
-      instructor: '64f456def456...', // <- Reemplazar con ID real si se usa
-      cupoMax: 20,
-      planesPermitidos: []
-    };
-
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/clases`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(nuevaClase)
-      });
-
-      if (!res.ok) throw new Error('Error al crear clase');
-      const claseCreada = await res.json();
-
-      // Redirigir directamente a la edición
-      navigate(`/admin/clases/${claseCreada.id}`);
-    } catch (err) {
-      console.error(err);
-      alert('No se pudo crear la clase');
-    }
+  const handleSelect = (info) => {
+    console.log('Seleccionado:', info); // Para debug
+    navigate('/admin/clases/create', {
+      state: {
+        fechaInicio: info.startStr,
+        fechaFin: info.endStr
+      }
+    });
   };
 
   const handleEventClick = ({ event }) => {
     navigate(`/admin/clases/${event.id}`);
   };
 
-  if (esMovil === null) return null; // Esperar a saber si es móvil
+  if (esMovil === null) return null;
 
   return (
     <>
@@ -92,18 +68,32 @@ export default function CalendarioAdmin() {
           .fc-timegrid-slot {
             height: 40px !important;
           }
+
+          @media (max-width: 767px) {
+            .fc-toolbar-title {
+              font-size: 1.2rem !important;
+            }
+          }
+
+          @media (min-width: 768px) {
+            .fc-toolbar-title {
+              font-size: 1.5rem;
+            }
+          }
         `}
       </style>
 
       <div className="container mt-4">
         <h2 className="mb-3">Gestión de clases</h2>
         <FullCalendar
-          key={esMovil ? 'movil' : 'desktop'} // Forzar re-render al cambiar vista
+          key={esMovil ? 'movil' : 'desktop'}
           plugins={[timeGridPlugin, interactionPlugin]}
           initialView={esMovil ? 'timeGridDay' : 'timeGridWeek'}
           locale="es"
           height="auto"
-          selectable
+          selectable={true}
+          selectMirror={true}
+          longPressDelay={10}
           select={handleSelect}
           events={events}
           eventClick={handleEventClick}
@@ -111,12 +101,24 @@ export default function CalendarioAdmin() {
           slotMinTime="06:00:00"
           slotMaxTime="22:00:00"
           slotDuration="01:00:00"
-          dayHeaderFormat={{ weekday: 'long' }}
+          buttonText={{
+            today: 'hoy',
+            week: 'semana',
+            day: 'día'
+          }}
+          dayHeaderContent={(arg) => {
+            const fecha = arg.date;
+            const dia = fecha.toLocaleDateString('es-AR', { weekday: 'long' });
+            const diaCapitalizado = dia.charAt(0).toUpperCase() + dia.slice(1);
+            const num = fecha.getDate();
+            const mes = fecha.getMonth() + 1;
+            return `${diaCapitalizado} ${num}/${mes}`;
+          }}
           slotLabelFormat={{ hour: '2-digit', minute: '2-digit', hour12: false }}
           headerToolbar={{
-            left: esMovil ? '' : 'prev,next today',
-            center: 'title',
-            right: esMovil ? '' : 'timeGridWeek,timeGridDay'
+            left: esMovil ? 'prev' : 'prev,next today',
+            center: esMovil ? 'title today' : 'title',
+            right: esMovil ? 'next' : 'timeGridWeek,timeGridDay'
           }}
         />
       </div>

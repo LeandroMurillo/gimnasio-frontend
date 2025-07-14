@@ -1,12 +1,4 @@
-import {
-  List,
-  Datagrid,
-  TextField,
-  EmailField,
-  BooleanField,
-  SimpleList,
-  useRecordContext
-} from 'react-admin';
+import { List, Datagrid, TextField, EmailField, SimpleList, useRecordContext } from 'react-admin';
 import { useMediaQuery, Button } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -51,18 +43,15 @@ export default function UsuariosList(props) {
         <SimpleList
           primaryText={(record) => `${record.nombre} ${record.apellido}`}
           secondaryText={(record) => record.correo}
-          tertiaryText={(record) => `Teléfono: ${record.telefono} | Rol: ${record.rol}`}
+          tertiaryText={(record) => `Teléfono: ${record.telefono}`}
           linkType={(record) => (record.id === ADMIN_ROOT_ID ? false : 'edit')}
         />
       ) : (
         <Datagrid>
-          <TextField source="id" label="ID" />
           <TextField source="nombre" label="Nombre" />
           <TextField source="apellido" label="Apellido" />
           <EmailField source="correo" label="Correo" />
           <TextField source="telefono" label="Teléfono" />
-          <TextField source="rol" label="Rol" />
-          <BooleanField source="estado" label="Estado" />
           <CustomActions />
         </Datagrid>
       )}

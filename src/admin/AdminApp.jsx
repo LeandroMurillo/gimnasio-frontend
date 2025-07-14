@@ -21,7 +21,7 @@ import ConfiguracionEdit from './configuracion/ConfiguracionEdit';
 
 import Soporte from './Soporte';
 
-import customSpanishMessages from '../traducciones';
+import customSpanishMessages from './traducciones';
 
 const i18nProvider = polyglotI18nProvider(() => customSpanishMessages, 'es');
 const dataProvider = simpleRestProvider(import.meta.env.VITE_API_URL);

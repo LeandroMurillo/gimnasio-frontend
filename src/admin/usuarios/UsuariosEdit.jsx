@@ -1,25 +1,8 @@
-import {
-  Edit,
-  SimpleForm,
-  TextInput,
-  BooleanInput,
-  DeleteButton,
-  Toolbar,
-  useRecordContext
-} from 'react-admin';
+import { Edit, SimpleForm, TextInput, BooleanInput, useRecordContext } from 'react-admin';
+
+import CustomToolbar from '../CustomToolbar';
 
 const ADMIN_ROOT_ID = '68728251b003a6f29d060bf4';
-
-function CustomToolbar() {
-  const record = useRecordContext();
-  if (!record || record.id === ADMIN_ROOT_ID) return null;
-
-  return (
-    <Toolbar>
-      <DeleteButton />
-    </Toolbar>
-  );
-}
 
 function UsuarioCamposForm() {
   const record = useRecordContext();
@@ -40,7 +23,16 @@ function UsuarioCamposForm() {
 export default function UsuariosEdit(props) {
   return (
     <Edit {...props} title="Editar Usuario" actions={false}>
-      <SimpleForm toolbar={<CustomToolbar />}>
+      <SimpleForm
+        toolbar={
+          <CustomToolbar
+            showDelete
+            useCustomDelete
+            resource="usuarios"
+            label="usuario"
+            resourcePath="/admin/usuarios"
+          />
+        }>
         <UsuarioCamposForm />
       </SimpleForm>
     </Edit>

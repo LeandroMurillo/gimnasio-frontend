@@ -20,6 +20,10 @@ export default function CustomAppBar(props) {
     navigate('/');
   };
 
+  const handleVisitarPagina = () => {
+    window.open('/', '_blank'); // Abre la página principal en una nueva pestaña
+  };
+
   return (
     <AppBar {...props}>
       <Toolbar sx={{ justifyContent: 'space-between', flexWrap: 'wrap' }}>
@@ -32,6 +36,9 @@ export default function CustomAppBar(props) {
         </Box>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Button color="inherit" onClick={handleVisitarPagina}>
+            Visitar página
+          </Button>
           <Button color="inherit" onClick={handleLogout}>
             Cerrar sesión
           </Button>

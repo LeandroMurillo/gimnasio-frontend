@@ -1,10 +1,5 @@
 import { Edit, SimpleForm, TextInput, Toolbar, SaveButton } from 'react-admin';
-
-const CustomToolbar = (props) => (
-  <Toolbar {...props}>
-    <SaveButton />
-  </Toolbar>
-);
+import CustomToolbar from '../CustomToolbar';
 
 export default function ConfiguracionEdit(props) {
   return (
